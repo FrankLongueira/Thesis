@@ -42,7 +42,7 @@ x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[1], x_train_sc
 model = dcam.train_model( model = model, inputs = x_train_scaled, labels = x_train_scaled, epochs = epochs, batch_size = batch_size )
 
 # Save/load model
-save_path = "/Users/franklongueira/Desktop/Thesis/Saved_Models/Current_Model"
+save_path = parent_cwd + "/Saved_Models/Current_Model"
 dcam.save_model(model, save_path)
 #load_path = "/Users/franklongueira/Desktop/Thesis/Saved_Models/Current_Model"
 #model = dcam.load_model_(load_path)
@@ -55,4 +55,4 @@ test_set_scaled = x_train_scaled
 test_set_prediction_indices = clus.cluster_and_match_routine(K, model, x_train_scaled, test_set_scaled)
 test_set_audio_rebuilt = ap.rebuild_audio(test_set_prediction_indices, x_train)	
 
-scipy.io.wavfile.write( filename = "Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)
