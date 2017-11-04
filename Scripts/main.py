@@ -3,9 +3,14 @@ import dca_model as dcam
 import clustering as clus
 import numpy as np
 import scipy.io.wavfile
+import os 
 
-# Load data
-audio_folder_path = "/Users/franklongueira/Desktop/Thesis/Audio_Files/16_kHz"
+# Get path locating audio files
+cwd = os.getcwd()
+parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
+audio_folder_path = parent_cwd + "/Audio_Files"
+
+# Load audio files
 chapter_names = ["Chapter1", "Chapter2"]
 noise_names = []
 chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_names )
