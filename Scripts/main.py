@@ -12,14 +12,14 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files"
 
 # Load audio files and store into dictionary for ease of access
-chapter_names = ["Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter5", "Chapter6"]
+chapter_names = ["Chapter1"]
 noise_names = []
 chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_names )
 
 # Concatenate audio from training chapters into one long vector
 # Create training set of windowed, overlapping frames. Each column is a frame. 
 # Then scale for computational purposes.
-training_chapter_names = ["Chapter1", "Chapter2", "Chapter3"]
+training_chapter_names = ["Chapter1"]
 
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
