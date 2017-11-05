@@ -67,5 +67,5 @@ x_test_prediction_indices = clus.match_routine(cluster_model, K_exemplar_indices
 
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file
-test_set_audio_rebuilt = ap.rebuild_audio(test_set_prediction_indices, x_train)	
+test_set_audio_rebuilt = ap.rebuild_audio(x_test_prediction_indices, x_train)	
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)
