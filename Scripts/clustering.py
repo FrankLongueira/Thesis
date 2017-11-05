@@ -25,7 +25,7 @@ def create_kmeans_model( K, training_frames_encoded_flattened ):
 	
 	return(cluster_model)
 
-def match_routine(cluster_model, model, test_frames_encoded_flattened):
+def match_routine(cluster_model, K_exemplar_indices, test_frames_encoded_flattened):
 	
 	test_set_prediction_indices = get_corresponding_times_series_indices( test_frames_encoded_flattened, cluster_model, K_exemplar_indices )
 

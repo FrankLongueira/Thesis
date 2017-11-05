@@ -63,7 +63,7 @@ kmeans_save_path = parent_cwd + "/Saved_Models/Current_KMeans_Model"
 pickle.dump(cluster_model, open(kmeans_save_path, 'wb'))
 
 K_exemplar_indices = clus.find_K_exemplars( x_train_encoded_flattened, cluster_model)
-x_test_prediction_indices = clus.match_routine(cluster_model, model, x_test_encoded_flattened)
+x_test_prediction_indices = clus.match_routine(cluster_model, K_exemplar_indices, x_test_encoded_flattened)
 
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file
