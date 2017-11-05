@@ -11,17 +11,22 @@ def get_corresponding_times_series_indices( new_data, cluster_model, K_exemplar_
 	cluster_indices = cluster_model.predict(new_data)
 	time_series_indices = K_exemplar_indices[ cluster_indices ]
 	return(time_series_indices)
-	
-def cluster_and_match_routine(K, model, training_set_scaled, test_set_scaled):
-	
-	training_set_encoded = dcam.get_intermediary_output( model, training_set_scaled )
-	training_set_encoded_flattened = np.reshape(training_set_encoded, (training_set_encoded.shape[0], -1))
 
-	cluster_model = KMeans(n_clusters = K).fit(training_set_encoded_flattened)
-	K_exemplar_indices = find_K_exemplars(training_set_encoded_flattened, cluster_model)
+def encode_and_flatten(model, frames_to_encode):
 
-	test_set_encoded = dcam.get_intermediary_output( model, test_set_scaled )
-	test_set_encoded_flattened = np.reshape(test_set_encoded, (test_set_encoded.shape[0], -1))
-	test_set_prediction_indices = get_corresponding_times_series_indices( test_set_encoded_flattened, cluster_model, K_exemplar_indices )
+	frames_encoded = dcam.get_intermediary_output( model, frames_to_encode )
+	frames_encoded_flattened = np.reshape(frames_encoded, (frames_encoded.shape[0], -1)) 
+	
+	return(frames_encoded_flattened)
+	
+def create_kmeans_model( K, training_frames_encoded_flattened ):
+
+	cluster_model = KMeans(n_clusters = K).fit(training_frames_encoded_flattened)
+	
+	return(cluster_model)
+
+def match_routine(cluster_model, model, test_frames_encoded_flattened):
+	
+	test_set_prediction_indices = get_corresponding_times_series_indices( test_frames_encoded_flattened, cluster_model, K_exemplar_indices )
 
 	return(test_set_prediction_indices)

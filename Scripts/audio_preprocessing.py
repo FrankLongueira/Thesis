@@ -63,7 +63,7 @@ def downsample( audio, orig_sr, targ_sr):
 		audio_downsampled = audio_downsampled.astype('int16')
 		return audio_downsampled, targ_sr
 		
-def generate_train_time_series( audio_time_series_train, fs, frame_time, scale_mean_variance = False, lag = 0.5 ):
+def generate_frames( audio_time_series_train, fs, frame_time, lag = 0.5 ):
 	frame_length = round_up_to_even( frame_time * fs ) 
 	total_time_steps = int((audio_time_series_train.size / (frame_length * lag)) - 1)
 	
