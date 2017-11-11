@@ -12,16 +12,13 @@ def get_corresponding_times_series_indices( new_data, cluster_model, K_exemplar_
 	time_series_indices = K_exemplar_indices[ cluster_indices ]
 	return(time_series_indices)
 
-def encode_and_flatten(model, frames_to_encode, batch_size = 100):
+def encode_and_flatten(model, frames_to_encode, batch_size = 1000):
 	
 	batches_frames_encoded_holder = []
 	for i in xrange(0, frames_to_encode.shape[0], batch_size):
 		batch_frames_to_encode = frames_to_encode[ i:i+batch_size , :, : ]
-		print( batch_frames_to_encode.shape )
 		batch_frames_encoded = dcam.get_intermediary_output( model, batch_frames_to_encode )
-		print( batch_frames_encoded.shape ) 
 		batch_frames_encoded_flattened = np.reshape(batch_frames_encoded, (batch_frames_encoded.shape[0], -1)) 
-		print( batch_frames_encoded_flattened.shape ) 
 		batches_frames_encoded_holder.append(batch_frames_encoded_flattened)
 		
 	frames_encoded_flattened = np.concatenate( batches_frames_encoded_holder, axis = 0 )
