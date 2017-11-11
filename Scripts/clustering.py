@@ -22,7 +22,6 @@ def encode_and_flatten(model, frames_to_encode, batch_size = 1000):
 		batches_frames_encoded_holder.append(batch_frames_encoded_flattened)
 		
 	frames_encoded_flattened = np.concatenate( batches_frames_encoded_holder, axis = 0 )
-	print( batch_frames_encoded_flattened.shape ) 
 	
 	return(frames_encoded_flattened)
 	
