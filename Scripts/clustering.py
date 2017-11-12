@@ -27,7 +27,7 @@ def encode_and_flatten(model, frames_to_encode, batch_size = 1000):
 	
 def create_kmeans_model( K, training_frames_encoded_flattened ):
 
-	cluster_model = KMeans(n_clusters = K).fit(training_frames_encoded_flattened)
+	cluster_model = KMeans(n_clusters = K, verbose = 1, n_init = 3).fit(training_frames_encoded_flattened)
 	
 	return(cluster_model)
 
