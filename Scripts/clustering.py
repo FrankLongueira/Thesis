@@ -2,7 +2,7 @@ import numpy as np
 import audio_preprocessing as ap
 import dca_model as dcam
 from sklearn.cluster import KMeans
-from sklearn.neighbors import KNeighbors
+from sklearn.neighbors import KNeighborsClassifier
 
 def find_K_exemplars( training_set_encoded_flatted, cluster_model ):
 	K_exemplar_indices = np.argmin( cluster_model.transform(training_set_encoded_flatted), axis = 0  )
