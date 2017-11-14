@@ -40,7 +40,7 @@ def match_routine(cluster_model, K_exemplar_indices, test_frames_encoded_flatten
 	
 
 def KNN_routine( training_frames_encoded_flattened, test_frames_encoded_flattened):
-	KNN_model = KNeighborsClassifier(n_neighbors = 1).fit( X = training_frames_encoded_flattened, y = np.zeros((training_frames_encoded_flattened.shape[0], 1)) )
+	KNN_model = KNeighborsClassifier(n_neighbors = 1).fit( X = training_frames_encoded_flattened, y = np.zeros((training_frames_encoded_flattened.shape[0], )) )
 	test_set_prediction_indices = KNN_model.kneighbors( X = test_frames_encoded_flattened, return_distance = False )
 	return(test_set_prediction_indices)
 	

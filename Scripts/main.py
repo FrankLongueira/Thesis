@@ -25,6 +25,7 @@ chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_n
 print("Creating training & test sets...")
 training_chapter_names = ["Chapter1"]
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
+audio_time_series_train = audio_time_series_train[0:60*fs]
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
 x_train_scaled = ap.scale_features( x_train, is_time_series = True )
 x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[1], x_train_scaled.shape[0], 1))
@@ -63,10 +64,12 @@ x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled)
 
 print("Matching test set with closest utterances in encoded space...")
 x_test_prediction_indices = clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened)
+print(x_test_prediction_indices)
+print( x_test_prediction_indices.shape )
 
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file
 
 print("Rebuilding test set audio file & saving to memory...")
-test_set_audio_rebuilt = ap.rebuild_audio(x_test_prediction_indices, x_train)	
+test_set_audio_rebuilt = ap.rebuild_audio(np.ravel(x_test_prediction_indices), x_train)	
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)
