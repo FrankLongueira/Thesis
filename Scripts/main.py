@@ -45,7 +45,7 @@ pool_size = 4
 model = dcam.create_model( input_shape, num_filters, filter_size, pool_size )
 
 # Train Neural Network
-epochs = 1
+epochs = 10
 batch_size = 100
 model = dcam.train_model( model = model, inputs = x_train_scaled, labels = x_train_scaled, epochs = epochs, batch_size = batch_size )
 
@@ -57,22 +57,12 @@ dcam.save_model(model, model_save_path)
 
 # Cluster training utterances using smallest encoded layer. 
 # Then match test set utterances with closest utterances in training utterance embedding
-K = int( x_train.shape[1] / 100 )
-
 print("Encoding & flattening training/test sets...")
 x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled)
 x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled)
 
-print("K-Means clustering encoded training set...")
-cluster_model = clus.create_kmeans_model( K, x_train_encoded_flattened )
-kmeans_save_path = parent_cwd + "/Saved_Models/Current_KMeans_Model"
-pickle.dump(cluster_model, open(kmeans_save_path, 'wb'))
-
-print("Finding K-exemplars for encoded training set...")
-K_exemplar_indices = clus.find_K_exemplars( x_train_encoded_flattened, cluster_model)
-
 print("Matching test set with closest utterances in encoded space...")
-x_test_prediction_indices = clus.match_routine(cluster_model, K_exemplar_indices, x_test_encoded_flattened)
+x_test_prediction_indices = clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened)
 
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file

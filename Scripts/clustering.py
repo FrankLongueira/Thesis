@@ -2,6 +2,7 @@ import numpy as np
 import audio_preprocessing as ap
 import dca_model as dcam
 from sklearn.cluster import KMeans
+from sklearn.neighbors import KNeighbors
 
 def find_K_exemplars( training_set_encoded_flatted, cluster_model ):
 	K_exemplar_indices = np.argmin( cluster_model.transform(training_set_encoded_flatted), axis = 0  )
@@ -36,3 +37,10 @@ def match_routine(cluster_model, K_exemplar_indices, test_frames_encoded_flatten
 	test_set_prediction_indices = get_corresponding_times_series_indices( test_frames_encoded_flattened, cluster_model, K_exemplar_indices )
 
 	return(test_set_prediction_indices)
+	
+
+def KNN_routine( training_frames_encoded_flattened, test_frames_encoded_flattened):
+	KNN_model = KNeighborsClassifier(n_neighbors= 1).fit(training_frames_encoded_flattened)
+	test_set_prediction_indices = KNN_model.kneighbors( X = test_frames_encoded_flattened, return_distance = False)
+	return(test_set_prediction_indices)
+	
