@@ -27,14 +27,14 @@ training_chapter_names = ["Chapter1"]
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
 x_train_scaled, train_scale_factor = ap.scale_features( x_train )
-x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
+x_train_scaled_input = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
 
 test_chapter_names = ["Chapter2"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
 audio_time_series_test = audio_time_series_test[0:60*fs]
 x_test = ap.generate_frames( audio_time_series_test, fs, frame_time = 0.015 )
 x_test_scaled, _ = ap.scale_features( x_test, train_scale_factor = train_scale_factor )
-x_test_scaled = np.reshape(x_test_scaled, (x_test_scaled.shape[0], x_test_scaled.shape[1], 1))
+x_test_scaled_input = np.reshape(x_test_scaled, (x_test_scaled.shape[0], x_test_scaled.shape[1], 1))
 
 # Build Neural Network
 print("Preparing neural network for training...")
@@ -45,9 +45,9 @@ pool_size = 4
 model = dcam.create_model( input_shape, num_filters, filter_size, pool_size )
 
 # Train Neural Network
-epochs = 3
+epochs = 1
 batch_size = 100
-model = dcam.train_model( model = model, inputs = x_train_scaled, labels = x_train_scaled, epochs = epochs, batch_size = batch_size )
+model = dcam.train_model( model = model, inputs = x_train_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
 # Save/load model
 model_save_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
@@ -58,12 +58,12 @@ dcam.save_model(model, model_save_path)
 # Cluster training utterances using smallest encoded layer. 
 # Then match test set utterances with closest utterances in training utterance embedding
 print("Encoding & flattening training/test sets...")
-x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled)
-x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled)
+x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
+x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled_input)
 
 	
 print("Matching test set with closest utterances in encoded space...")
-x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
+x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_scaled, x_test_scaled, n_jobs = 3))
 
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file
