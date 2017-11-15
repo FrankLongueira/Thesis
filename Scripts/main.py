@@ -47,7 +47,7 @@ model = dcam.create_model( input_shape, num_filters, filter_size, pool_size )
 # Train Neural Network
 epochs = 20
 batch_size = 100
-model = dcam.train_model( model = model, inputs = x_train_scaled_input, labels = x_train_scaled, epochs = epochs, batch_size = batch_size )
+model = dcam.train_model( model = model, inputs = x_train_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
 # Save/load model
 model_save_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
