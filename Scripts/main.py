@@ -29,7 +29,7 @@ audio_time_series_train = audio_time_series_train[0:30*fs]
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
 x_train_scaled, train_scale_factor = np.transpose(ap.scale_features( x_train ))
 print(x_train_scaled.shape)
-x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[1], x_train_scaled.shape[0], 1))
+x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
 
 test_chapter_names = ["Chapter1"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
