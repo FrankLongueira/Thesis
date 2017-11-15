@@ -88,7 +88,7 @@ def scale_features( x_train_features, train_scale_factor = None ):
 	else:
 		x_train_features = x_train_features / train_scale_factor
 		
-	return(x_train_features, train_scale_factor)
+	return(x_train_features.T, train_scale_factor)
 	
 def rebuild_audio( predicted_time_series_indices, x_train ):
 	output = x_train[:, predicted_time_series_indices[0]]
