@@ -25,7 +25,6 @@ chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_n
 print("Creating training & test sets...")
 training_chapter_names = ["Chapter1"]
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
-audio_time_series_train = audio_time_series_train[0:120*fs]
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
 x_train_scaled, train_scale_factor = ap.scale_features( x_train )
 x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
