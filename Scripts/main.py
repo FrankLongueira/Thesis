@@ -12,7 +12,7 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files"
 
 # Load audio files and store into dictionary for ease of access
-chapter_names = ["Chapter1"]
+chapter_names = ["Chapter1", "Chapter2"]
 noise_names = []
 
 print("Loading audio files...")
