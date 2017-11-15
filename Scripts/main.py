@@ -64,7 +64,7 @@ x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled)
 
 count = 0
 for i in xrange(0, x_test_encoded_flattened.shape[0]):
-	if( x_train_encoded_flattened[i, :] == x_test_encoded_flattened[i, :] ):
+	if( numpy.array_equal( x_train_encoded_flattened[i, :], x_test_encoded_flattened[i, :] ) ):
 		count += 1
 		print(count)
 		print(np.shape[0])
