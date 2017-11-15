@@ -29,7 +29,6 @@ audio_time_series_train = audio_time_series_train[0:120*fs]
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
 x_train_scaled, train_scale_factor = ap.scale_features( x_train )
 x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
-print(x_train_scaled.shape)
 
 test_chapter_names = ["Chapter1"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
@@ -37,17 +36,6 @@ audio_time_series_test = audio_time_series_test[0:60*fs]
 x_test = ap.generate_frames( audio_time_series_test, fs, frame_time = 0.015 )
 x_test_scaled, _ = ap.scale_features( x_test, train_scale_factor = train_scale_factor )
 x_test_scaled = np.reshape(x_test_scaled, (x_test_scaled.shape[0], x_test_scaled.shape[1], 1))
-print(x_test_scaled.shape)
-
-count = 0
-for i in xrange(0, x_train_scaled.shape[0]):
-	if( np.array_equal( x_train_scaled[i,:, :], x_test_scaled[i, :,:] ) ):
-		count += 1
-		print(count)
-		print(x_train_scaled.shape[0])
-	else:
-		print("Nope")
-
 
 # Build Neural Network
 print("Preparing neural network for training...")
