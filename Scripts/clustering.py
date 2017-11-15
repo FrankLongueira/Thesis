@@ -13,7 +13,7 @@ def get_corresponding_times_series_indices( new_data, cluster_model, K_exemplar_
 	time_series_indices = K_exemplar_indices[ cluster_indices ]
 	return(time_series_indices)
 
-def encode_and_flatten(model, frames_to_encode, batch_size = 1000):
+def encode_and_flatten(model, frames_to_encode, batch_size = 100):
 	
 	batches_frames_encoded_holder = []
 	for i in xrange(0, frames_to_encode.shape[0], batch_size):
