@@ -25,7 +25,7 @@ chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_n
 print("Creating training & test sets...")
 training_chapter_names = ["Chapter1"]
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
-audio_time_series_train = audio_time_series_train[0:60*fs]
+audio_time_series_train = audio_time_series_train[0:120*fs]
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.015 )
 x_train_scaled, train_scale_factor = ap.scale_features( x_train )
 x_train_scaled = np.reshape(x_train_scaled, (x_train_scaled.shape[1], x_train_scaled.shape[0], 1))
@@ -60,11 +60,14 @@ dcam.save_model(model, model_save_path)
 # Then match test set utterances with closest utterances in training utterance embedding
 print("Encoding & flattening training/test sets...")
 x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled)
+print( x_train_encoded_flattened[ 1, : ] )
 x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled)
+print( x_test_encoded_flattened[ 1, : ] )
+print( np.sum( x_train_encoded_flattened[ 1, : ] - x_test_encoded_flattened[ 1, : ] ) )
 
 print("Matching test set with closest utterances in encoded space...")
 x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
-
+print( x_test_prediction_indices )
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file
 
