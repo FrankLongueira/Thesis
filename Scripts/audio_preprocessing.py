@@ -99,8 +99,8 @@ def rebuild_audio_from_indices( predicted_time_series_indices, x_train ):
 	return(output.astype('int16'))
 	
 def rebuild_audio( x_test ):
-	output = x_test[:, 0]
-	for i in xrange(1, x_test.shape[1]-1):
-		output = overlapp_add_reconstruction(output, x_test[:, i])
+	output = x_test[0, :]
+	for i in xrange(1, x_test.shape[0]-1):
+		output = overlapp_add_reconstruction(output, x_test[i, :])
 		
 	return(output.astype('int16'))
