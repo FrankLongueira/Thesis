@@ -69,6 +69,6 @@ x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled_input)
 
 print("Rebuilding test set audio file & saving to memory...")
 #test_set_audio_rebuilt = ap.rebuild_audio_from_indices(x_test_prediction_indices, x_train)	
-test_set_audio_rebuilt = rebuild_audio( x_test_encoded_flattened )
+test_set_audio_rebuilt = ap.rebuild_audio( x_test_encoded_flattened )
 
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)

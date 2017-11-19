@@ -48,7 +48,7 @@ def train_model( model, inputs, labels, epochs, batch_size ):
 	model.fit(	inputs, labels,
             	epochs = epochs,
                 batch_size = batch_size,
-                shuffle=True ) 
+                shuffle = False ) 
                 #validation_data=(x_test_noisy, x_test)
                 #tensorboard --logdir=/tmp/autoencoder
                 #callbacks=[TensorBoard(log_dir='/tmp/tb', histogram_freq=0, write_graph=False)]    
