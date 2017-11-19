@@ -6,33 +6,39 @@ from keras.layers import LSTM
 from keras.models import load_model
 from keras import backend as K
 
-def create_model(input_shape, num_filters, filter_size, pool_size):
-
+def create_dcae_model(input_shape, filter_size):
+	
 	model = Sequential()
 	
 	# Encode image into down-sampled latent space
-	model.add(Conv1D(num_filters, filter_size, activation='relu', padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = 12, kernel_size = filter_size, activation='relu', padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	
-	model.add(Conv1D(num_filters, filter_size, activation='relu', padding='same'))
-	model.add(MaxPooling1D(pool_size, padding='same'))
+	model.add(Conv1D(num_filters = 20, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(MaxPooling1D(pool_size = 4, padding='same'))
 	
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters, filter_size, activation='relu', padding='same'))
-	model.add(MaxPooling1D(pool_size, padding='same'))
+	model.add(Conv1D(num_filters = 30, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(MaxPooling1D(pool_size = 4, padding='same'))
+	
+	### 
+	model.add(BatchNormalization())
+	model.add(Conv1D(num_filters = 40, kernel_size = filter_size, activation='relu', padding='same'))
+	###
+	
+	model.add(BatchNormalization())
+	model.add(Conv1D(num_filters = 30, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(UpSampling1D(pool_size = 4))
+	
+	model.add(BatchNormalization())
+	model.add(Conv1D(num_filters = 20, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(UpSampling1D(pool_size = 4))
+	
+	model.add(BatchNormalization())
+	model.add(Conv1D(num_filters = 12, kernel_size = filter_size, activation='relu', padding='same'))
 
-	# Decode from down-sampled latent space back to the original space
-	
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters, filter_size, activation='relu', padding='same'))
-	model.add(UpSampling1D(pool_size))
-	
-	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters, filter_size, activation='relu', padding='same'))
-	model.add(UpSampling1D(pool_size))
-	
-	model.add(BatchNormalization())
-	model.add(Conv1D(1, filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(1, kernel_size  = filter_size, activation='relu', padding='same'))
 	
 	return(model)
 	
