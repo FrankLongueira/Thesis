@@ -14,28 +14,28 @@ def create_model(input_shape, filter_size):
 	model.add(Conv1D(filters = 12, kernel_size = filter_size, activation='relu', padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	
-	model.add(Conv1D(num_filters = 20, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(filters = 20, kernel_size = filter_size, activation='relu', padding='same'))
 	model.add(MaxPooling1D(pool_size = 4, padding='same'))
 	
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters = 30, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(filters = 30, kernel_size = filter_size, activation='relu', padding='same'))
 	model.add(MaxPooling1D(pool_size = 4, padding='same'))
 	
 	### 
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters = 40, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(filters = 40, kernel_size = filter_size, activation='relu', padding='same'))
 	###
 	
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters = 30, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(filters = 30, kernel_size = filter_size, activation='relu', padding='same'))
 	model.add(UpSampling1D(pool_size = 4))
 	
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters = 20, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(filters = 20, kernel_size = filter_size, activation='relu', padding='same'))
 	model.add(UpSampling1D(pool_size = 4))
 	
 	model.add(BatchNormalization())
-	model.add(Conv1D(num_filters = 12, kernel_size = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(filters = 12, kernel_size = filter_size, activation='relu', padding='same'))
 
 	model.add(BatchNormalization())
 	model.add(Conv1D(1, kernel_size  = filter_size, activation='relu', padding='same'))
