@@ -39,7 +39,7 @@ x_test_scaled_input = np.reshape(x_test_scaled, (x_test_scaled.shape[0], x_test_
 # Build Neural Network
 print("Preparing neural network for training...")
 input_shape = (x_train.shape[0], 1)
-filter_size = int(0.005*fs)
+filter_size = int(0.008*fs)
 
 model = dcam.create_model( input_shape, filter_size,)
 
