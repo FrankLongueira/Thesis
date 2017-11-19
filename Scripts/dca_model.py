@@ -6,7 +6,7 @@ from keras.layers import LSTM
 from keras.models import load_model
 from keras import backend as K
 
-def create_dcae_model(input_shape, filter_size):
+def create_model(input_shape, filter_size):
 	
 	model = Sequential()
 	
