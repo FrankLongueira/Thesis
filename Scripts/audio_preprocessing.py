@@ -90,10 +90,17 @@ def scale_features( x_train_features, train_scale_factor = None ):
 		
 	return(x_train_features.T, train_scale_factor)
 	
-def rebuild_audio( predicted_time_series_indices, x_train ):
+def rebuild_audio_from_indices( predicted_time_series_indices, x_train ):
 	output = x_train[:, predicted_time_series_indices[0]]
 	
 	for i in predicted_time_series_indices[1:]:
 		output = overlapp_add_reconstruction(output, x_train[:, i])
+		
+	return(output.astype('int16'))
+	
+def rebuild_audio( x_test ):
+	output = x_test[:, 0]
+	for i in xrange(1, x_test.shape[1]-1):
+		output = overlapp_add_reconstruction(output, x_test[:, i])
 		
 	return(output.astype('int16'))

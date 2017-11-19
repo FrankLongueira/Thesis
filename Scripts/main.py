@@ -39,7 +39,7 @@ x_test_scaled_input = np.reshape(x_test_scaled, (x_test_scaled.shape[0], x_test_
 # Build Neural Network
 print("Preparing neural network for training...")
 input_shape = (x_train.shape[0], 1)
-filter_size = int(0.008*fs)
+filter_size = int(0.005*fs)
 
 model = dcam.create_model( input_shape, filter_size,)
 
@@ -61,12 +61,14 @@ x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
 x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled_input)
 
 	
-print("Matching test set with closest utterances in encoded space...")
-x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
+#print("Matching test set with closest utterances in encoded space...")
+#x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
 
 # Use training utterances to reconstruct test set audio
 # Save audio to .wav file
 
 print("Rebuilding test set audio file & saving to memory...")
-test_set_audio_rebuilt = ap.rebuild_audio(x_test_prediction_indices, x_train)	
+#test_set_audio_rebuilt = ap.rebuild_audio_from_indices(x_test_prediction_indices, x_train)	
+test_set_audio_rebuilt = rebuild_audio( x_test_encoded_flattened )
+
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)

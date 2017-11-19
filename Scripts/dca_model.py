@@ -67,7 +67,7 @@ def predict_model( model, inputs ):
 	
 def get_intermediary_output( model, new_input ):
 	get_output = K.function([model.layers[0].input, K.learning_phase()],
-                                  	  [model.layers[ (len(model.layers) / 2) - 1 ].output])
+                                  	  [model.layers[ len(model.layers) - 1 ].output])
 	layer_output = get_output([new_input, 0])[0]
 	
 	return(layer_output)
