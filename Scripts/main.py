@@ -38,15 +38,15 @@ x_train_scaled_input = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_tr
 
 x_train_noisy = ap.generate_frames( audio_time_series_train_noisy, fs, frame_time = 0.020 )
 x_train_noisy_scaled = ap.scale_features( x_train_noisy, train_mu, train_std )
-x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
+x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_scaled.shape[0], x_train_noisy_scaled.shape[1], 1))
 
 test_chapter_names = ["Chapter2"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
 audio_time_series_test = audio_time_series_test[0:60*fs]
 audio_time_series_test_noisy = audio_time_series_test + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/4, size = audio_time_series_test.shape)
 x_test_noisy = ap.generate_frames( audio_time_series_test_noisy, fs, frame_time = 0.020 )
-x_test_noisy_scaled = ap.scale_features( x_test, train_mu, train_std )
-x_test_noisy_scaled_input = np.reshape(x_test_scaled, (x_test_scaled.shape[0], x_test_scaled.shape[1], 1))
+x_test_noisy_scaled = ap.scale_features( x_test_noisy, train_mu, train_std )
+x_test_noisy_scaled_input = np.reshape(x_test_noisy_scaled, (x_test_noisy_scaled.shape[0], x_test_noisy_scaled.shape[1], 1))
 
 # Build Neural Network
 print("Preparing neural network for training...")
