@@ -80,15 +80,11 @@ def generate_train_features( x_train ):
 		x_train_features[:, i] = np.abs(np.fft.fft( a = x_train[:, i], n = n ))
 	return(x_train_features)
 	
-def scale_features( x_train_features, train_scale_factor = None ):
+def scale_features( x_train_features, mu, sd ):
 	
-	if train_scale_factor is None:
-		train_scale_factor = np.amax(np.abs(x_train_features))
-		x_train_features = x_train_features / train_scale_factor
-	else:
-		x_train_features = x_train_features / train_scale_factor
+	x_train_features = (x_train_features - mu) / float(sd)
 		
-	return(x_train_features.T, train_scale_factor)
+	return(x_train_features.T)
 	
 def rebuild_audio_from_indices( predicted_time_series_indices, x_train ):
 	output = x_train[:, predicted_time_series_indices[0]]
