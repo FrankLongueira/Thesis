@@ -19,11 +19,7 @@ def create_model(input_shape, filter_size):
 	#model.add(MaxPooling1D(pool_size = 4, padding='same'))
 	
 	#model.add(BatchNormalization())
-	#model.add(Conv1D(filters = 64, kernel_size = filter_size, padding='same', input_shape = input_shape))
-	#model.add(BatchNormalization())
-	#model.add(Activation('relu'))
-	
-	model.add(Dense(64, input_shape = input_shape))
+	model.add(Conv1D(filters = 64, kernel_size = filter_size, padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 	#model.add(MaxPooling1D(pool_size = 4, padding='same'))
@@ -44,9 +40,8 @@ def create_model(input_shape, filter_size):
 	#model.add(BatchNormalization())
 	#model.add(Conv1D(filters = 12, kernel_size = filter_size, activation='relu', padding='same'))
 
-	#model.add(Conv1D(1, kernel_size  = filter_size, padding='same'))
-	model.add(Dense(320, input_shape= input_shape))
-
+	model.add(Conv1D(1, kernel_size  = filter_size, padding='same'))
+	
 	return(model)
 	
 def train_model( model, inputs, labels, epochs, batch_size ):
