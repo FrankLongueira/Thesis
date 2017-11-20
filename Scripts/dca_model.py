@@ -40,7 +40,7 @@ def create_model(input_shape, filter_size):
 	#model.add(BatchNormalization())
 	#model.add(Conv1D(filters = 12, kernel_size = filter_size, activation='relu', padding='same'))
 
-	model.add(Conv1D(1, kernel_size  = filter_size, activation='relu', padding='same'))
+	model.add(Conv1D(1, kernel_size  = filter_size, padding='same'))
 	
 	return(model)
 	
