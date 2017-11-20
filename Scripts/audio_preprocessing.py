@@ -80,9 +80,9 @@ def generate_train_features( x_train ):
 		x_train_features[:, i] = np.abs(np.fft.fft( a = x_train[:, i], n = n ))
 	return(x_train_features)
 	
-def scale_features( x_train_features, mu, sd ):
+def scale_features( x_train_features, mu, std ):
 	
-	x_train_features = (x_train_features - mu) / float(sd)
+	x_train_features = (x_train_features - mu) / float(std)
 		
 	return(x_train_features.T)
 	
