@@ -47,7 +47,7 @@ filter_size = int(0.005*fs)
 model = dcam.create_model( input_shape, filter_size,)
 
 # Train Neural Network
-epochs = 3
+epochs = 1
 batch_size = 100
 model = dcam.train_model( model = model, inputs = x_train_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
