@@ -27,9 +27,8 @@ training_chapter_names = ["Chapter1"]
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
 train_mu = np.mean( audio_time_series_train )
 train_std = np.std( audio_time_series_train )
-print(np.min(audio_time_series_train), np.max(audio_time_series_train), np.mean(audio_time_series_train), np.std(audio_time_series_train))
 
-audio_time_series_train_noisy = audio_time_series_train + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/4, size = audio_time_series_train.shape)
+audio_time_series_train_noisy = audio_time_series_train + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/100, size = audio_time_series_train.shape)
 
 
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.020 )
@@ -43,7 +42,7 @@ x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_sca
 test_chapter_names = ["Chapter2"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
 audio_time_series_test = audio_time_series_test[0:60*fs]
-audio_time_series_test_noisy = audio_time_series_test + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/4, size = audio_time_series_test.shape)
+audio_time_series_test_noisy = audio_time_series_test + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/100, size = audio_time_series_test.shape)
 x_test_noisy = ap.generate_frames( audio_time_series_test_noisy, fs, frame_time = 0.020 )
 x_test_noisy_scaled = ap.scale_features( x_test_noisy, train_mu, train_std )
 x_test_noisy_scaled_input = np.reshape(x_test_noisy_scaled, (x_test_noisy_scaled.shape[0], x_test_noisy_scaled.shape[1], 1))
@@ -71,9 +70,6 @@ dcam.save_model(model, model_save_path)
 print("Encoding & flattening training/test sets...")
 #x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
 x_test_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_scaled_input)) + train_mu
-print(x_test_encoded_flattened)
-print(x_test_encoded_flattened.shape)
-
 	
 #print("Matching test set with closest utterances in encoded space...")
 #x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
