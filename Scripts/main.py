@@ -58,7 +58,7 @@ dcam.save_model(model, model_save_path)
 # Then match test set utterances with closest utterances in training utterance embedding
 print("Encoding & flattening training/test sets...")
 #x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
-x_test_encoded_flattened = clus.encode_and_flatten(model, x_test_scaled_input)
+x_test_encoded_flattened = train_scale_factor * clus.encode_and_flatten(model, x_test_scaled_input)
 print(x_test_encoded_flattened)
 print(x_test_encoded_flattened.shape)
 
