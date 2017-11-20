@@ -85,4 +85,5 @@ print("Rebuilding test set audio file & saving to memory...")
 #test_set_audio_rebuilt = ap.rebuild_audio_from_indices(x_test_prediction_indices, x_train)	
 test_set_audio_rebuilt = ap.rebuild_audio( x_test_encoded_flattened )
 
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test_Noisy.wav", rate = fs, data = audio_time_series_test_noisy)
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)
