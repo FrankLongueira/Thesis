@@ -5,6 +5,7 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers import LSTM
 from keras.models import load_model
 from keras import backend as K
+from keras.layers import Activation
 
 def create_model(input_shape, filter_size):
 	
