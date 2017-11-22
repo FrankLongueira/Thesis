@@ -31,7 +31,7 @@ train_std = np.std( audio_time_series_train )
 
 audio_time_series_train_noise, fs = ap.concatenate_audio( training_noise_names, noise )
 
-snr_db = 100
+snr_db = 10
 audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_train, audio_time_series_train_noise, snr_db)
 
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.020 )
@@ -59,7 +59,7 @@ print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
 filter_size = int(0.005*fs)
 
-model = dcam.create_model( input_shape, filter_size,)
+model = dcam.create_model( input_shape, filter_size )
 
 # Train Neural Network
 epochs = 1
