@@ -31,7 +31,7 @@ train_std = np.std( audio_time_series_train )
 
 audio_time_series_train_noise, fs = ap.concatenate_audio( training_noise_names, noise )
 
-snr_db = 100
+snr_db = 10
 audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_train, audio_time_series_train_noise, snr_db)
 
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.020 )
