@@ -72,9 +72,8 @@ def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, sn
 	scaling_coeff = np.sqrt(A_noise_targ_2) / np.sqrt(A_noise_2)
 	
 	print(A_train_2, A_noise_2, A_noise_targ_2, scaling_coeff)
-	audio_time_series_noise = scaling_coeff * audio_time_series_noise
 	
-	combined_result = audio_time_series_train + audio_time_series_noise
+	combined_result = audio_time_series_train + (scaling_coeff * audio_time_series_noise)
 	
 	return(combined_result)
 
