@@ -47,7 +47,7 @@ test_noise_names = ["Chapter2_Babble"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
 audio_time_series_noise, fs = ap.concatenate_audio( test_noise_names, noise )
 audio_time_series_test = audio_time_series_test[0:60*fs]
-audio_time_series_test_noise = audio_time_series_test[0:60*fs]
+audio_time_series_test_noise = audio_time_series_noise[0:60*fs]
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
 
 x_test_noisy = ap.generate_frames( audio_time_series_test_noisy, fs, frame_time = 0.020 )
