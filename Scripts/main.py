@@ -13,7 +13,7 @@ audio_folder_path = parent_cwd + "/Audio_Files"
 
 # Load audio files and store into dictionary for ease of access
 chapter_names = ["Chapter1", "Chapter2"]
-noise_names = []
+noise_names = ["Chapter1_Babble", "Chapter2_Babble"]
 
 print("Loading audio files...")
 chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_names )
@@ -24,12 +24,15 @@ chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_n
 
 print("Creating training & test sets...")
 training_chapter_names = ["Chapter1"]
+training_noise_names = ["Chapter1_Babble"]
 audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
 train_mu = np.mean( audio_time_series_train )
 train_std = np.std( audio_time_series_train )
 
-audio_time_series_train_noisy = audio_time_series_train + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/100, size = audio_time_series_train.shape)
+audio_time_series_train_noise, fs = ap.concatenate_audio( training_noise_names, noise )
 
+snr_db = 10
+audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_train, audio_time_series_train_noise, snr_db)
 
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.020 )
 x_train_scaled = ap.scale_features( x_train, train_mu, train_std )
@@ -40,9 +43,13 @@ x_train_noisy_scaled = ap.scale_features( x_train_noisy, train_mu, train_std )
 x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_scaled.shape[0], x_train_noisy_scaled.shape[1], 1))
 
 test_chapter_names = ["Chapter2"]
+test_noise_names = ["Chapter2_Babble"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
+audio_time_series_noise, fs = ap.concatenate_audio( test_noise_names, noise )
 audio_time_series_test = audio_time_series_test[0:60*fs]
-audio_time_series_test_noisy = audio_time_series_test + np.random.normal(loc=0.0, scale= np.std(audio_time_series_train)/100, size = audio_time_series_test.shape)
+audio_time_series_test_noise = audio_time_series_test[0:60*fs]
+audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
+
 x_test_noisy = ap.generate_frames( audio_time_series_test_noisy, fs, frame_time = 0.020 )
 x_test_noisy_scaled = ap.scale_features( x_test_noisy, train_mu, train_std )
 x_test_noisy_scaled_input = np.reshape(x_test_noisy_scaled, (x_test_noisy_scaled.shape[0], x_test_noisy_scaled.shape[1], 1))

@@ -56,6 +56,22 @@ def concatenate_audio( names, dict ):
 		arrays_to_concatenate.append(dict[name][0])
 
 	return(np.concatenate(arrays_to_concatenate) , fs)
+def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, snr_db):
+	if( audio_time_series_train.size <= audio_time_series_noise.size ):
+		audio_time_series_noise = audio_time_series_noise[0:(audio_time_series_train.size-1)] 
+	else:
+		audio_time_series_train = audio_time_series_train.size[0:(audio_time_series_noise.size-1)]
+	
+	A_train = np.mean(np.absolute(audio_time_series_train))
+	A_noise = np.mean(np.absolute(audio_time_series_noise))
+	A_noise_targ = np.sqrt( (A_train**2) / (10**(snr_db/10.)) )
+	
+	scaling_coeff = A_noise_targ / A_noise
+	audio_time_series_noise = scaling_coeff * audio_time_series_noise
+	
+	combined_result = audio_time_series_train + audio_time_series_noise
+	
+	return(combined_result)
 
 def downsample( audio, orig_sr, targ_sr):
 		audio = audio.astype('float')
