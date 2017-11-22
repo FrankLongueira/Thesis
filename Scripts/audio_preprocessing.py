@@ -58,9 +58,9 @@ def concatenate_audio( names, dict ):
 	return(np.concatenate(arrays_to_concatenate) , fs)
 def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, snr_db):
 	if( audio_time_series_train.size <= audio_time_series_noise.size ):
-		audio_time_series_noise = audio_time_series_noise[0:(audio_time_series_train.size-1)] 
+		audio_time_series_noise = audio_time_series_noise[0:audio_time_series_train.size] 
 	else:
-		audio_time_series_train = audio_time_series_train.size[0:(audio_time_series_noise.size-1)]
+		audio_time_series_train = audio_time_series_train.size[0:audio_time_series_noise.size]
 	
 	A_train = np.mean(np.absolute(audio_time_series_train))
 	A_noise = np.mean(np.absolute(audio_time_series_noise))
