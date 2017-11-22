@@ -62,11 +62,14 @@ def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, sn
 	else:
 		audio_time_series_train = audio_time_series_train.size[0:audio_time_series_noise.size]
 	
-	A_train = np.mean(np.absolute(audio_time_series_train))
-	A_noise = np.mean(np.absolute(audio_time_series_noise))
-	A_noise_targ = np.sqrt( (A_train**2) / (10**(snr_db/10.)) )
+	audio_time_series_train = audio_time_series_train.astype('float')
+	audio_time_series_noise = audio_time_series_noise.astype('float')
 	
-	scaling_coeff = A_noise_targ / A_noise
+	A_train_2 = np.mean(np.power(np.absolute(audio_time_series_train),2))
+	A_noise_2 = np.mean(np.power(np.absolute(audio_time_series_noise),2))
+	A_noise_targ_2 = A_train_2 / (10**(snr_db/10.))
+	
+	scaling_coeff = np.sqrt(A_noise_targ_2) / np.sqrt(A_noise_2)
 	
 	print(A_train, A_noise, A_noise_targ, scaling_coeff)
 	audio_time_series_noise = scaling_coeff * audio_time_series_noise
