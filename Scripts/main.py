@@ -31,7 +31,7 @@ train_std = np.std( audio_time_series_train )
 
 audio_time_series_train_noise, fs = ap.concatenate_audio( training_noise_names, noise )
 
-t = range(0, audio_time_series_train.size)
+t = np.array(range(0, audio_time_series_train.size))
 f = 1000
 audio_time_series_train_noise = np.sin(2*np.pi*f/fs*t)
 
@@ -53,7 +53,7 @@ audio_time_series_test_noise, fs = ap.concatenate_audio( test_noise_names, noise
 audio_time_series_test = audio_time_series_test[0:60*fs]
 audio_time_series_test_noise = audio_time_series_test_noise[0:60*fs]
 
-t = range(0, audio_time_series_test.size)
+t = np.array(range(0, audio_time_series_test.size))
 f = 1000
 audio_time_series_test_noise = np.sin(2*np.pi*f/fs*t)
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
