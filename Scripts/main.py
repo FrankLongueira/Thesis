@@ -32,10 +32,14 @@ train_std = np.std( audio_time_series_train )
 audio_time_series_train_noise, fs = ap.concatenate_audio( training_noise_names, noise )
 
 t = np.array(range(0, audio_time_series_train.size))
-f = 1000
-audio_time_series_train_noise = np.sin(2*np.pi*f/fs*t)
+f1 = 1e1
+f2 = 1e2
+f3 = 1e3
+f4 = 1e4
+f5 = 1e5
+audio_time_series_train_noise = np.sin(2*np.pi*f1/fs*t) + np.sin(2*np.pi*f2/fs*t) + np.sin(2*np.pi*f3/fs*t) + np.sin(2*np.pi*f4/fs*t) + np.sin(2*np.pi*f5/fs*t)
 
-snr_db = 8
+snr_db = 5
 audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_train, audio_time_series_train_noise, snr_db)
 
 x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.020 )
@@ -54,8 +58,12 @@ audio_time_series_test = audio_time_series_test[0:60*fs]
 audio_time_series_test_noise = audio_time_series_test_noise[0:60*fs]
 
 t = np.array(range(0, audio_time_series_test.size))
-f = 1000
-audio_time_series_test_noise = np.sin(2*np.pi*f/fs*t)
+f1 = 1e1
+f2 = 1e2
+f3 = 1e3
+f4 = 1e4
+f5 = 1e5
+audio_time_series_test_noise = np.sin(2*np.pi*f1/fs*t) + np.sin(2*np.pi*f2/fs*t) + np.sin(2*np.pi*f3/fs*t) + np.sin(2*np.pi*f4/fs*t) + np.sin(2*np.pi*f5/fs*t)
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
 
 x_test_noisy = ap.generate_frames( audio_time_series_test_noisy, fs, frame_time = 0.020 )
