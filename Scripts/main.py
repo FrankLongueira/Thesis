@@ -46,8 +46,8 @@ test_chapter_names = ["Chapter2"]
 test_noise_names = ["Chapter2_Babble"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
 audio_time_series_test_noise, fs = ap.concatenate_audio( test_noise_names, noise )
-audio_time_series_test = audio_time_series_train[0:60*fs]
-audio_time_series_test_noise = audio_time_series_train_noise[0:60*fs]
+audio_time_series_test = audio_time_series_test[0:60*fs]
+audio_time_series_test_noise = audio_time_series_test_noise[0:60*fs]
 
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
 
@@ -60,18 +60,18 @@ print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
 filter_size = int(0.005*fs)
 
-model = dcam.create_model( input_shape, filter_size )
+#model = dcam.create_model( input_shape, filter_size )
 
 # Train Neural Network
 epochs = 50
 batch_size = 100
-model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
+#model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
 # Save/load model
-model_save_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
-dcam.save_model(model, model_save_path)
-#load_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
-#model = dcam.load_model_(load_path)
+#model_save_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
+#dcam.save_model(model, model_save_path)
+load_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
+model = dcam.load_model_(load_path)
 
 # Cluster training utterances using smallest encoded layer. 
 # Then match test set utterances with closest utterances in training utterance embedding
