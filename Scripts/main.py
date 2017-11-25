@@ -12,8 +12,8 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files"
 
 # Load audio files and store into dictionary for ease of access
-chapter_names = ["Chapter1", "Chapter2"]
-noise_names = ["Chapter1_Babble", "Chapter2_Babble"]
+chapter_names = ["Chapter1", "Chapter2_5_Min"]
+noise_names = ["Chapter1_Babble", "Chapter2_Babble_Train_5_Min", "Chapter2_Babble_Testing_5_Min"]
 
 print("Loading audio files...")
 chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_names )
@@ -42,18 +42,24 @@ x_train_noisy = ap.generate_frames( audio_time_series_train_noisy, fs, frame_tim
 x_train_noisy_scaled = ap.scale_features( x_train_noisy, train_mu, train_std )
 x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_scaled.shape[0], x_train_noisy_scaled.shape[1], 1))
 
-test_chapter_names = ["Chapter2"]
-test_noise_names = ["Chapter2_Babble"]
+test_chapter_names = ["Chapter2_5_Min"]
+test_noise_names = ["Chapter2_Babble_Train_5_Min", "Chapter2_Babble_Testing_5_Min"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
-audio_time_series_test_noise, fs = ap.concatenate_audio( test_noise_names, noise )
+audio_time_series_test_noise = ap.concatenate_audio( test_noise_names, noise )
 audio_time_series_test = audio_time_series_test[0:60*fs]
-audio_time_series_test_noise = audio_time_series_test_noise[0:60*fs]
+audio_time_series_test_noise_train = audio_time_series_test_noise[0:60*fs]
+audio_time_series_test_noise_test = audio_time_series_test_noise[340:400*fs]
 
-audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
+audio_time_series_test_noisy_train = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_train, snr_db)
+audio_time_series_test_noisy_test = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_test, snr_db)
 
-x_test_noisy = ap.generate_frames( audio_time_series_test_noisy, fs, frame_time = 0.020 )
-x_test_noisy_scaled = ap.scale_features( x_test_noisy, train_mu, train_std )
-x_test_noisy_scaled_input = np.reshape(x_test_noisy_scaled, (x_test_noisy_scaled.shape[0], x_test_noisy_scaled.shape[1], 1))
+x_test_noisy_train = ap.generate_frames( audio_time_series_test_noisy_train, fs, frame_time = 0.020 )
+x_test_noisy_train_scaled = ap.scale_features( x_test_noisy_train, train_mu, train_std )
+x_test_noisy_train_scaled_input = np.reshape(x_test_noisy_train_scaled, (x_test_noisy_train_scaled.shape[0], x_test_noisy_train_scaled.shape[1], 1))
+
+x_test_noisy_test = ap.generate_frames( audio_time_series_test_noisy_test, fs, frame_time = 0.020 )
+x_test_noisy_test_scaled = ap.scale_features( x_test_noisy_train, train_mu, train_std )
+x_test_noisy_test_scaled_input = np.reshape(x_test_noisy_test_scaled, (x_test_noisy_test_scaled.shape[0], x_test_noisy_test_scaled.shape[1], 1))
 
 # Build Neural Network
 print("Preparing neural network for training...")
@@ -77,8 +83,9 @@ model = dcam.load_model_(load_path)
 # Then match test set utterances with closest utterances in training utterance embedding
 print("Encoding & flattening training/test sets...")
 #x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
-x_test_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_scaled_input)) + train_mu
-	
+x_test_train_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_train_scaled_input)) + train_mu
+x_test_test_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_test_scaled_input)) + train_mu
+
 #print("Matching test set with closest utterances in encoded space...")
 #x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
 
@@ -87,7 +94,11 @@ x_test_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_no
 
 print("Rebuilding test set audio file & saving to memory...")
 #test_set_audio_rebuilt = ap.rebuild_audio_from_indices(x_test_prediction_indices, x_train)	
-test_set_audio_rebuilt = ap.rebuild_audio( x_test_encoded_flattened )
+test_train_set_audio_rebuilt = ap.rebuild_audio( x_test_train_encoded_flattened )
+test_test_set_audio_rebuilt = ap.rebuild_audio( x_test_test_encoded_flattened )
 
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test_Noisy.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Output_Test.wav", rate = fs, data = test_set_audio_rebuilt)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Validation.wav", rate = fs, data = audio_time_series_test_noisy_train.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Validation.wav", rate = fs, data = test_train_set_audio_rebuilt)
+
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Test.wav", rate = fs, data = audio_time_series_test_noisy_test.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
