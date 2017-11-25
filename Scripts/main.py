@@ -43,12 +43,13 @@ x_train_noisy_scaled = ap.scale_features( x_train_noisy, train_mu, train_std )
 x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_scaled.shape[0], x_train_noisy_scaled.shape[1], 1))
 
 test_chapter_names = ["Chapter2_5_Min"]
-test_noise_names = ["Chapter2_Babble_Train_5_Min", "Chapter2_Babble_Testing_5_Min"]
+test_train_noise_names = ["Chapter2_Babble_Train_5_Min"]
+test_test_noise_names = ["Chapter2_Babble_Testing_5_Min"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
-audio_time_series_test_noise, fs = ap.concatenate_audio( test_noise_names, noise )
+audio_time_series_test_noise_train, fs = ap.concatenate_audio( test_train_noise_names, noise )
+audio_time_series_test_noise_test, fs = ap.concatenate_audio( test_test_noise_names, noise )
+
 audio_time_series_test = audio_time_series_test[0:60*fs]
-audio_time_series_test_noise_train = audio_time_series_test_noise[0:60*fs]
-audio_time_series_test_noise_test = audio_time_series_test_noise[340:400*fs]
 
 audio_time_series_test_noisy_train = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_train, snr_db)
 audio_time_series_test_noisy_test = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_test, snr_db)
