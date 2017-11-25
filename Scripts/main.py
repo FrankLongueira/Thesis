@@ -45,7 +45,7 @@ x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_sca
 test_chapter_names = ["Chapter2_5_Min"]
 test_noise_names = ["Chapter2_Babble_Train_5_Min", "Chapter2_Babble_Testing_5_Min"]
 audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
-audio_time_series_test_noise = ap.concatenate_audio( test_noise_names, noise )
+audio_time_series_test_noise, fs = ap.concatenate_audio( test_noise_names, noise )
 audio_time_series_test = audio_time_series_test[0:60*fs]
 audio_time_series_test_noise_train = audio_time_series_test_noise[0:60*fs]
 audio_time_series_test_noise_test = audio_time_series_test_noise[340:400*fs]
@@ -58,7 +58,7 @@ x_test_noisy_train_scaled = ap.scale_features( x_test_noisy_train, train_mu, tra
 x_test_noisy_train_scaled_input = np.reshape(x_test_noisy_train_scaled, (x_test_noisy_train_scaled.shape[0], x_test_noisy_train_scaled.shape[1], 1))
 
 x_test_noisy_test = ap.generate_frames( audio_time_series_test_noisy_test, fs, frame_time = 0.020 )
-x_test_noisy_test_scaled = ap.scale_features( x_test_noisy_train, train_mu, train_std )
+x_test_noisy_test_scaled = ap.scale_features( x_test_noisy_test, train_mu, train_std )
 x_test_noisy_test_scaled_input = np.reshape(x_test_noisy_test_scaled, (x_test_noisy_test_scaled.shape[0], x_test_noisy_test_scaled.shape[1], 1))
 
 # Build Neural Network
