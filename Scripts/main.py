@@ -84,8 +84,8 @@ model = dcam.load_model_(load_path)
 # Then match test set utterances with closest utterances in training utterance embedding
 print("Encoding & flattening training/test sets...")
 #x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
-x_test_train_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_train_scaled_input)) + train_mu
-x_test_test_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_test_scaled_input)) + train_mu
+x_test_train_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_train_scaled_input)) + train_mu
+x_test_test_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_test_scaled_input)) + train_mu
 
 #print("Matching test set with closest utterances in encoded space...")
 #x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
