@@ -77,7 +77,7 @@ batch_size = 100
 # Save/load model
 #model_save_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
 #dcam.save_model(model, model_save_path)
-load_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
+load_path = parent_cwd + "/Saved_Models/Model1"
 model = dcam.load_model_(load_path)
 
 # Cluster training utterances using smallest encoded layer. 
