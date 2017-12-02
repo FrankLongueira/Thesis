@@ -65,8 +65,6 @@ x_test_noisy_test_scaled_input = np.reshape(x_test_noisy_test_scaled, (x_test_no
 # Build Neural Network
 print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
-print(fs)
-print(input_shape)
 filter_size = int(0.005*fs)
 
 #model = dcam.create_model( input_shape, filter_size )
@@ -74,20 +72,19 @@ filter_size = int(0.005*fs)
 # Train Neural Network
 epochs = 50
 batch_size = 100
-#model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
+model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
 # Save/load model
-#model_save_path = parent_cwd + "/Saved_Models/Current_CNN_Model"
-#dcam.save_model(model, model_save_path)
-load_path = parent_cwd + "/Saved_Models/Model1"
-model = dcam.load_model_(load_path)
+model_save_path = parent_cwd + "/Saved_Models/Model1"
+dcam.save_model(model, model_save_path)
+#load_path = parent_cwd + "/Saved_Models/Model1"
+#model = dcam.load_model_(load_path)
 
 # Cluster training utterances using smallest encoded layer. 
 # Then match test set utterances with closest utterances in training utterance embedding
-print("Encoding & flattening training/test sets...")
-#x_train_encoded_flattened = clus.encode_and_flatten(model, x_train_scaled_input)
-x_test_train_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_train_scaled_input)) + train_mu
-x_test_test_encoded_flattened = (train_std * clus.encode_and_flatten(model, x_test_noisy_test_scaled_input)) + train_mu
+print("Getting CNN output...")
+x_test_train_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_train_scaled_input)) + train_mu
+x_test_test_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_test_scaled_input)) + train_mu
 
 #print("Matching test set with closest utterances in encoded space...")
 #x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
