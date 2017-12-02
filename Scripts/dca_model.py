@@ -69,9 +69,21 @@ def predict_model( model, inputs ):
 	predictions = model.predict(inputs, batch_size = None, verbose=0, steps=None)
 	return(predictions)
 	
-def get_intermediary_output( model, new_input ):
+def get_output( model, new_input ):
 	get_output = K.function([model.layers[0].input, K.learning_phase()],
                                   	  [model.layers[ len(model.layers) - 1 ].output])
 	layer_output = get_output([new_input, 0])[0]
 	
 	return(layer_output)
+	
+def get_output_multiple_batches(model, input_frames, batch_size = 100):
+	
+	batches_frames_output_holder = []
+	for i in xrange(0, input_frames.shape[0], batch_size):
+		batch_input_frames = input_frames[ i:i+batch_size , :, : ]
+		batch_output_frames = get_output( model, batch_input_frames )
+		batches_output_frames_holder.append(batch_output_frames)
+		
+	output_frames_concatenated = np.concatenate( batches_frames_encoded_holder, axis = 0 )
+	
+	return(output_frames_concatenated)

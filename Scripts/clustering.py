@@ -18,7 +18,7 @@ def encode_and_flatten(model, frames_to_encode, batch_size = 100):
 	batches_frames_encoded_holder = []
 	for i in xrange(0, frames_to_encode.shape[0], batch_size):
 		batch_frames_to_encode = frames_to_encode[ i:i+batch_size , :, : ]
-		batch_frames_encoded = dcam.get_intermediary_output( model, batch_frames_to_encode )
+		batch_frames_encoded = dcam.get_output( model, batch_frames_to_encode )
 		batch_frames_encoded_flattened = np.reshape(batch_frames_encoded, (batch_frames_encoded.shape[0], -1)) 
 		batches_frames_encoded_holder.append(batch_frames_encoded_flattened)
 		
