@@ -1,5 +1,4 @@
 import numpy as np
-import audio_preprocessing as ap
 import dca_model as dcam
 from sklearn.cluster import KMeans
 from sklearn.neighbors import KNeighborsClassifier
@@ -25,7 +24,7 @@ def encode_and_flatten(model, frames_to_encode, batch_size = 100):
 	frames_encoded_flattened = np.concatenate( batches_frames_encoded_holder, axis = 0 )
 	
 	return(frames_encoded_flattened)
-	
+
 def create_kmeans_model( K, training_frames_encoded_flattened ):
 
 	cluster_model = KMeans(n_clusters = K, verbose = 1, n_init = 3).fit(training_frames_encoded_flattened)

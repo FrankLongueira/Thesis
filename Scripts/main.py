@@ -1,26 +1,18 @@
 import audio_preprocessing as ap
 import dca_model as dcam
-import clustering as clus
 import numpy as np
 import scipy.io.wavfile
 import os 
-import pickle
 
-# Get path locating audio files
+print("Getting paths to audio files...")
 cwd = os.getcwd()
 parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files"
 
-# Load audio files and store into dictionary for ease of access
+print("Loading audio files...")
 chapter_names = ["Chapter1", "Chapter2_5_Min"]
 noise_names = ["Chapter1_Babble", "Chapter2_Babble_Train_5_Min", "Chapter2_Babble_Testing_5_Min"]
-
-print("Loading audio files...")
 chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_names )
-
-# Concatenate audio from training chapters into one long vector
-# Create training set of windowed, overlapping frames. Each column is a frame. 
-# Then scale for computational purposes.
 
 print("Creating training & test sets...")
 training_chapter_names = ["Chapter1"]
@@ -62,38 +54,25 @@ x_test_noisy_test = ap.generate_frames( audio_time_series_test_noisy_test, fs, f
 x_test_noisy_test_scaled = ap.scale_features( x_test_noisy_test, train_mu, train_std )
 x_test_noisy_test_scaled_input = np.reshape(x_test_noisy_test_scaled, (x_test_noisy_test_scaled.shape[0], x_test_noisy_test_scaled.shape[1], 1))
 
-# Build Neural Network
 print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
 filter_size = int(0.005*fs)
-
 model = dcam.create_model( input_shape, filter_size )
-
-# Train Neural Network
-epochs = 50
+epochs = 1
 batch_size = 100
 model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
-# Save/load model
+print( "Saving (Loading) trained model..." )
 model_save_path = parent_cwd + "/Saved_Models/Model1"
 dcam.save_model(model, model_save_path)
 #load_path = parent_cwd + "/Saved_Models/Model1"
 #model = dcam.load_model_(load_path)
 
-# Cluster training utterances using smallest encoded layer. 
-# Then match test set utterances with closest utterances in training utterance embedding
-print("Getting CNN output...")
+print("Getting CNN output for noisy test set inputs...")
 x_test_train_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_train_scaled_input)) + train_mu
 x_test_test_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_test_scaled_input)) + train_mu
 
-#print("Matching test set with closest utterances in encoded space...")
-#x_test_prediction_indices = np.ravel( clus.KNN_routine(x_train_encoded_flattened, x_test_encoded_flattened, n_jobs = 3))
-
-# Use training utterances to reconstruct test set audio
-# Save audio to .wav file
-
-print("Rebuilding test set audio file & saving to memory...")
-#test_set_audio_rebuilt = ap.rebuild_audio_from_indices(x_test_prediction_indices, x_train)	
+print("Perfectly reconstructing filtered test set audio & saving to memory...")
 test_train_set_audio_rebuilt = ap.rebuild_audio( x_test_train_encoded_flattened )
 test_test_set_audio_rebuilt = ap.rebuild_audio( x_test_test_encoded_flattened )
 

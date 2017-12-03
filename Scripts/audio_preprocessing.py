@@ -56,6 +56,7 @@ def concatenate_audio( names, dict ):
 		arrays_to_concatenate.append(dict[name][0])
 
 	return(np.concatenate(arrays_to_concatenate) , fs)
+	
 def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, snr_db):
 	if( audio_time_series_train.size <= audio_time_series_noise.size ):
 		audio_time_series_noise = audio_time_series_noise[0:audio_time_series_train.size] 
@@ -76,11 +77,11 @@ def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, sn
 	return(combined_result)
 
 def downsample( audio, orig_sr, targ_sr):
-		audio = audio.astype('float')
-		audio_downsampled = librosa.resample(audio, orig_sr, targ_sr)
-		audio_downsampled = audio_downsampled.astype('int16')
-		return audio_downsampled, targ_sr
-		
+	audio = audio.astype('float')
+	audio_downsampled = librosa.resample(audio, orig_sr, targ_sr)
+	audio_downsampled = audio_downsampled.astype('int16')
+	return audio_downsampled, targ_sr
+
 def generate_frames( audio_time_series_train, fs, frame_time, lag = 0.5 ):
 	frame_length = round_up_to_even( frame_time * fs ) 
 	total_time_steps = int((audio_time_series_train.size / (frame_length * lag)) - 1)
@@ -89,6 +90,7 @@ def generate_frames( audio_time_series_train, fs, frame_time, lag = 0.5 ):
 
 	for i in range(0, (total_time_steps - 1)):
 		x_train[:, i] =  apply_window( audio_time_series_train[ i*(frame_length / 2) : (i*(frame_length / 2) + frame_length) ] )
+		
 	return(x_train)
 	
 def generate_train_features( x_train ):
