@@ -63,6 +63,6 @@ def get_output_multiple_batches(model, input_frames, batch_size = 100):
 		#batch_output_frames_flattened = np.reshape(batch_output_frames, (batch_output_frames.shape[0], -1)) 
 		batches_output_frames_holder.append(batch_output_frames)
 		
-	output_frames_concatenated = np.concatenate( batches_frames_encoded_holder, axis = 0 )
+	output_frames_concatenated = np.concatenate( batches_output_frames_holder, axis = 0 )
 	
 	return(output_frames_concatenated)
