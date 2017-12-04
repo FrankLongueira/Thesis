@@ -122,17 +122,17 @@ def rebuild_audio( x_test ):
 	return(output.astype('int16'))
 
 def sdr_computation( target_speech, distorted_speech ):
-	if( clean_speech.size <= estimated_speech.size ):
-		estimated_speech = estimated_speech[0:clean_speech.size] 
+	if( target_speech.size <= distorted_speech.size ):
+		distorted_speech = distorted_speech[0:target_speech.size] 
 	else:
-		clean_speech = clean_speech[0:estimated_speech.size]
+		target_speech = target_speech[0:distorted_speech.size]
 	
-	clean_speech = clean_speech.astype('float')
-	estimated_speech = estimated_speech.astype('float')
+	target_speech = target_speech.astype('float')
+	distorted_speech = distorted_speech.astype('float')
 
-	A_clean_2 = np.mean(np.power(np.absolute(target_speech),2))
+	A_target_2 = np.mean(np.power(np.absolute(target_speech),2))
 	A_noisedistortion_2 = np.mean(np.power(np.absolute(distorted_speech),2))
 	
-	sdr = 10*np.log10(A_clean_2 / A_noisedistortion_2)
+	sdr = 10*np.log10(A_target_2 / A_noisedistortion_2)
 	
 	return(sdr)

@@ -88,4 +88,4 @@ sdr_db_estimated = ap.sdr_computation( target_speech = test_test_set_audio_rebui
 
 print("The SDR of the actual speech sample is: " + str(sdr_db_actual) + " dB.")
 print("The SDR of the estimated speech sample is: " + str(sdr_db_estimated) + " dB.")
-print("The relative improvement is: " + str(sdr_db_estimated - sdr_db_actual) + " dB.")
+print("The relative power accuracy is: " + str(sdr_db_estimated - sdr_db_actual) + " dB.")
