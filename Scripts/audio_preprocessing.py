@@ -120,3 +120,11 @@ def rebuild_audio( x_test ):
 		output = overlapp_add_reconstruction(output, x_test[i, :])
 		
 	return(output.astype('int16'))
+
+def sndr_computation( clean_speech, estimated_speech ):
+	A_clean_2 = np.mean(np.power(np.absolute(clean_speech),2))
+	A_noisedistortion_2 = np.mean(np.power(np.absolute(estimated_speech - clean_speech),2))
+	
+	sndr = 10*log(A_clean_2 / A_noisedistortion_2)
+	
+	return(sndr)
