@@ -64,10 +64,10 @@ batch_size = 100
 model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
 print( "Saving (Loading) trained model..." )
-model_save_path = parent_cwd + "/Saved_Models/Model2"
-dcam.save_model(model, model_save_path)
-#load_path = parent_cwd + "/Saved_Models/Model1"
-#model = dcam.load_model_(load_path)
+#model_save_path = parent_cwd + "/Saved_Models/Model2"
+#dcam.save_model(model, model_save_path)
+load_path = parent_cwd + "/Saved_Models/Model1"
+model = dcam.load_model_(load_path)
 
 print("Getting CNN output for noisy test set inputs...")
 x_test_train_encoded_flattened = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_train_scaled_input)) + train_mu
@@ -85,5 +85,6 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Test.wav"
 
 sndr_db = ap.sndr_computation( clean_speech = audio_time_series_test, estimated_speech = test_test_set_audio_rebuilt )
 
-print("The SNR of the noisy speech sample is: " + snr_db + " dB.")
-print("The SNDR of the filtered speech sample is: " + sndr_db + " dB.")
+print("The SNR of the noisy speech sample is: " + str(snr_db) + " dB.")
+print("The SNDR of the filtered speech sample is: " + str(sndr_db) + " dB.")
+print("The improvement is: " + str(sndr_db - snr_db) + " dB.")
