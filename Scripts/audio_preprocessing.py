@@ -61,7 +61,7 @@ def combine_clean_and_noise(audio_time_series_train, audio_time_series_noise, sn
 	if( audio_time_series_train.size <= audio_time_series_noise.size ):
 		audio_time_series_noise = audio_time_series_noise[0:audio_time_series_train.size] 
 	else:
-		audio_time_series_train = audio_time_series_train.size[0:audio_time_series_noise.size]
+		audio_time_series_train = audio_time_series_train[0:audio_time_series_noise.size]
 	
 	audio_time_series_train = audio_time_series_train.astype('float')
 	audio_time_series_noise = audio_time_series_noise.astype('float')
@@ -122,6 +122,11 @@ def rebuild_audio( x_test ):
 	return(output.astype('int16'))
 
 def sdr_computation( clean_speech, estimated_speech ):
+	if( clean_speech.size <= estimated_speech.size ):
+		estimated_speech = estimated_speech[0:clean_speech.size] 
+	else:
+		clean_speech = clean_speech[0:estimated_speech.size]
+		
 	A_clean_2 = np.mean(np.power(np.absolute(clean_speech),2))
 	A_noisedistortion_2 = np.mean(np.power(np.absolute(estimated_speech - clean_speech),2))
 	
