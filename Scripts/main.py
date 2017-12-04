@@ -87,5 +87,5 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Clean_Test.wav", r
 sdr_db = ap.sdr_computation( clean_speech = audio_time_series_test, estimated_speech = test_test_set_audio_rebuilt )
 
 print("The SNR of the noisy speech sample is: " + str(snr_db) + " dB.")
-print("The SNDR of the filtered speech sample is: " + str(sdr_db) + " dB.")
+print("The SDR of the filtered speech sample is: " + str(sdr_db) + " dB.")
 print("The improvement is: " + str(sdr_db - snr_db) + " dB.")
