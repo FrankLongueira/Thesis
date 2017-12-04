@@ -84,7 +84,7 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Test.wav", r
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
 
 babble = audio_time_series_test_noisy_test - audio_time_series_test
-distortion = test_test_set_audio_rebuilt - audio_time_series_test
+distortion = test_test_set_audio_rebuilt - audio_time_series_test[0:test_test_set_audio_rebuilt.size]
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Babble_Test.wav", rate = fs, data = babble.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Distortion_Test.wav", rate = fs, data = distortion.astype('int16'))
 
