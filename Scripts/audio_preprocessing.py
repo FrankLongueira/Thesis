@@ -126,7 +126,10 @@ def sdr_computation( clean_speech, estimated_speech ):
 		estimated_speech = estimated_speech[0:clean_speech.size] 
 	else:
 		clean_speech = clean_speech[0:estimated_speech.size]
-		
+	
+	clean_speech = clean_speech.astype('float')
+	estimated_speech = estimated_speech.astype('float')
+
 	A_clean_2 = np.mean(np.power(np.absolute(clean_speech),2))
 	A_noisedistortion_2 = np.mean(np.power(np.absolute(estimated_speech - clean_speech),2))
 	
