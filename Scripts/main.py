@@ -82,7 +82,11 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Validatio
 
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Test.wav", rate = fs, data = audio_time_series_test_noisy_test.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Clean_Test.wav", rate = fs, data = audio_time_series_test.astype('int16'))
+
+babble = audio_time_series_test_noisy_test - audio_time_series_test
+distortion = test_test_set_audio_rebuilt - audio_time_series_test
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Babble_Test.wav", rate = fs, data = babble.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Distortion_Test.wav", rate = fs, data = distortion.astype('int16'))
 
 sdr_db = ap.sdr_computation( clean_speech = audio_time_series_test, estimated_speech = test_test_set_audio_rebuilt )
 sdr_db_2 = ap.sdr_computation( clean_speech = audio_time_series_test, estimated_speech = audio_time_series_test_noisy_test )
