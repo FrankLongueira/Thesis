@@ -61,7 +61,7 @@ filter_size = int(0.005*fs)
 model = dcam.create_model( input_shape, filter_size )
 epochs = 50
 batch_size = 100
-model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
+#model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
 
 print( "Saving (Loading) trained model..." )
 #model_save_path = parent_cwd + "/Saved_Models/Model2"
@@ -83,8 +83,8 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Validatio
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Test.wav", rate = fs, data = audio_time_series_test_noisy_test.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
 
-sndr_db = ap.sndr_computation( clean_speech = audio_time_series_test, estimated_speech = test_test_set_audio_rebuilt )
+sdr_db = ap.sdr_computation( clean_speech = audio_time_series_test, estimated_speech = test_test_set_audio_rebuilt )
 
 print("The SNR of the noisy speech sample is: " + str(snr_db) + " dB.")
-print("The SNDR of the filtered speech sample is: " + str(sndr_db) + " dB.")
-print("The improvement is: " + str(sndr_db - snr_db) + " dB.")
+print("The SNDR of the filtered speech sample is: " + str(sdr_db) + " dB.")
+print("The improvement is: " + str(sdr_db - snr_db) + " dB.")
