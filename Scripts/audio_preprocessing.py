@@ -130,6 +130,6 @@ def sdr_computation( clean_speech, estimated_speech ):
 	A_clean_2 = np.mean(np.power(np.absolute(clean_speech),2))
 	A_noisedistortion_2 = np.mean(np.power(np.absolute(estimated_speech - clean_speech),2))
 	
-	sdr = 10*log(A_clean_2 / A_noisedistortion_2)
+	sdr = 10*np.log(A_clean_2 / A_noisedistortion_2)
 	
 	return(sdr)
