@@ -24,14 +24,14 @@ def create_model(input_shape, filter_size):
 	
 	return(model)
 	
-def train_model( model, inputs, labels, epochs, batch_size ):
+def train_model( model, train_inputs, train_labels, epochs, batch_size, validation_inputs, validation_labels ):
 
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
-	model.fit(	inputs, labels,
+	model.fit(	train_inputs, train_labels,
             	epochs = epochs,
                 batch_size = batch_size,
-                shuffle = False ) 
-                #validation_data=(x_test_noisy, x_test)
+                shuffle = True,
+                validation_data=(validation_inputs, validation_labels))
                 #tensorboard --logdir=/tmp/autoencoder
                 #callbacks=[TensorBoard(log_dir='/tmp/tb', histogram_freq=0, write_graph=False)]    
 	return(model)

@@ -42,10 +42,21 @@ audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters 
 audio_time_series_test_noise_train, fs = ap.concatenate_audio( test_train_noise_names, noise )
 audio_time_series_test_noise_test, fs = ap.concatenate_audio( test_test_noise_names, noise )
 
+audio_time_series_validation = audio_time_series_test[100*fs:160*fs]
+audio_time_series_validation_noise = audio_time_series_test_noise_test[100*fs:160*fs]
 audio_time_series_test = audio_time_series_test[0:60*fs]
 
+audio_time_series_validation_noisy = ap.combine_clean_and_noise(audio_time_series_validation, audio_time_series_validation_noise, snr_db)
 audio_time_series_test_noisy_train = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_train, snr_db)
 audio_time_series_test_noisy_test = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_test, snr_db)
+
+x_validation = ap.generate_frames( audio_time_series_validation, fs, frame_time = 0.020 )
+x_validation_scaled = ap.scale_features( x_validation, train_mu, train_std )
+x_validation_scaled_input = np.reshape(x_validation_scaled, (x_validation_scaled.shape[0], x_validation_scaled.shape[1], 1))
+
+x_validation_noisy = ap.generate_frames( audio_time_series_validation_noisy, fs, frame_time = 0.020 )
+x_validation_noisy_scaled = ap.scale_features( x_validation_noisy, train_mu, train_std )
+x_validation_noisy_scaled_input = np.reshape(x_validation_noisy_scaled, (x_validation_noisy_scaled.shape[0], x_validation_noisy_scaled.shape[1], 1))
 
 x_test_noisy_train = ap.generate_frames( audio_time_series_test_noisy_train, fs, frame_time = 0.020 )
 x_test_noisy_train_scaled = ap.scale_features( x_test_noisy_train, train_mu, train_std )
@@ -61,13 +72,19 @@ filter_size = int(0.005*fs)
 model = dcam.create_model( input_shape, filter_size )
 epochs = 50
 batch_size = 100
-#model = dcam.train_model( model = model, inputs = x_train_noisy_scaled_input, labels = x_train_scaled_input, epochs = epochs, batch_size = batch_size )
+model = dcam.train_model( 	model = model, 
+							train_inputs = x_train_noisy_scaled_input, 
+							train_labels = x_train_scaled_input, 
+							epochs = epochs, 
+							batch_size = batch_size,
+							validation_inputs = x_validation_noisy_scaled_input,
+							validation_labels = x_validation_scaled_input)
 
 print( "Saving (Loading) trained model..." )
-#model_save_path = parent_cwd + "/Saved_Models/Model2"
-#dcam.save_model(model, model_save_path)
-load_path = parent_cwd + "/Saved_Models/Model1"
-model = dcam.load_model_(load_path)
+model_save_path = parent_cwd + "/Saved_Models/Model2"
+dcam.save_model(model, model_save_path)
+#load_path = parent_cwd + "/Saved_Models/Model1"
+#model = dcam.load_model_(load_path)
 
 print("Getting CNN output for noisy test set inputs...")
 x_test_train = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_train_scaled_input)) + train_mu
