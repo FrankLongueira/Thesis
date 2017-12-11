@@ -70,7 +70,7 @@ print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
 filter_size = int(0.005*fs)
 model = dcam.create_model( input_shape, filter_size )
-epochs = 50
+epochs = 1
 batch_size = 100
 model = dcam.train_model( 	model = model, 
 							train_inputs = x_train_noisy_scaled_input, 
