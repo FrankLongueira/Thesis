@@ -30,7 +30,7 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 	model.fit(	train_inputs, train_labels,
             	epochs = epochs,
                 batch_size = batch_size,
-                shuffle = True,
+                shuffle = False,
                 validation_data=(validation_inputs, validation_labels))
                 #tensorboard --logdir=/tmp/autoencoder
                 #callbacks=[TensorBoard(log_dir='/tmp/tb', histogram_freq=0, write_graph=False)]    
