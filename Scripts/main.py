@@ -42,8 +42,8 @@ audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters 
 audio_time_series_test_noise_train, fs = ap.concatenate_audio( test_train_noise_names, noise )
 audio_time_series_test_noise_test, fs = ap.concatenate_audio( test_test_noise_names, noise )
 
-audio_time_series_validation = audio_time_series_test[100*fs:160*fs]
-audio_time_series_validation_noise = audio_time_series_test_noise_test[100*fs:160*fs]
+audio_time_series_validation = audio_time_series_test[240*fs:]
+audio_time_series_validation_noise = audio_time_series_test_noise_test[240*fs:]
 audio_time_series_test = audio_time_series_test[0:60*fs]
 
 audio_time_series_validation_noisy = ap.combine_clean_and_noise(audio_time_series_validation, audio_time_series_validation_noise, snr_db)
