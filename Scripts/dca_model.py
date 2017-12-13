@@ -12,11 +12,11 @@ def create_model(input_shape, filter_size):
 	
 	model = Sequential()
 	
-	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = 128, kernel_size = filter_size, padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 
-	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = 128, kernel_size = filter_size, padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 	
