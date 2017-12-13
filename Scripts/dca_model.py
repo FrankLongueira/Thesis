@@ -24,16 +24,21 @@ def create_model(input_shape, filter_size):
 	
 	return(model)
 	
-def train_model( model, train_inputs, train_labels, epochs, batch_size, validation_inputs, validation_labels ):
+def train_model( model, train_inputs, train_labels, epochs, batch_size, validation_inputs, validation_labels, filepath ):
 
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
+	
+	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose=1, mode = 'min', save_best_only=True)
+
 	model.fit(	train_inputs, train_labels,
             	epochs = epochs,
                 batch_size = batch_size,
                 shuffle = False,
-                validation_data=(validation_inputs, validation_labels))
-                #tensorboard --logdir=/tmp/autoencoder
-                #callbacks=[TensorBoard(log_dir='/tmp/tb', histogram_freq=0, write_graph=False)]    
+                validation_data=(validation_inputs, validation_labels),
+                callbacks=[checkpointer])
+    
+    model = load_model( filepath )
+
 	return(model)
 
 def save_model( model, save_path ):

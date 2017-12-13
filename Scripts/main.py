@@ -70,18 +70,22 @@ print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
 filter_size = int(0.005*fs)
 model = dcam.create_model( input_shape, filter_size )
-epochs = 50
+epochs = 1
 batch_size = 100
+
+model_save_path = parent_cwd + "/Saved_Models/ModelCALLBACK"
+
 model = dcam.train_model( 	model = model, 
 							train_inputs = x_train_noisy_scaled_input, 
 							train_labels = x_train_scaled_input, 
 							epochs = epochs, 
 							batch_size = batch_size,
 							validation_inputs = x_validation_noisy_scaled_input,
-							validation_labels = x_validation_scaled_input)
+							validation_labels = x_validation_scaled_input
+							filepath = model_save_path)
 
 print( "Saving (Loading) trained model..." )
-model_save_path = parent_cwd + "/Saved_Models/Model2"
+model_save_path = parent_cwd + "/Saved_Models/Model3"
 dcam.save_model(model, model_save_path)
 #load_path = parent_cwd + "/Saved_Models/Model1"
 #model = dcam.load_model_(load_path)
