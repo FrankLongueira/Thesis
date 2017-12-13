@@ -37,7 +37,7 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
                 validation_data=(validation_inputs, validation_labels),
                 callbacks=[checkpointer])
     
-    model = load_model( filepath )
+	model = load_model(filepath)
 
 	return(model)
 
