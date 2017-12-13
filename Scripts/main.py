@@ -81,7 +81,7 @@ model = dcam.train_model( 	model = model,
 							epochs = epochs, 
 							batch_size = batch_size,
 							validation_inputs = x_validation_noisy_scaled_input,
-							validation_labels = x_validation_scaled_input
+							validation_labels = x_validation_scaled_input,
 							filepath = model_save_path)
 
 print( "Saving (Loading) trained model..." )
