@@ -70,10 +70,11 @@ print("Preparing neural network for training...")
 input_shape = (x_train_noisy.shape[0], 1)
 filter_size = int(0.005*fs)
 model = dcam.create_model( input_shape, filter_size )
-epochs = 100
+epochs = 200
 batch_size = 100
 
-model_save_path = parent_cwd + "/Saved_Models/Model3"
+model_name = "Model4"
+model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 model = dcam.train_model( 	model = model, 
 							train_inputs = x_train_noisy_scaled_input, 
@@ -85,9 +86,9 @@ model = dcam.train_model( 	model = model,
 							filepath = model_save_path)
 
 print( "Saving (Loading) trained model..." )
-#model_save_path = parent_cwd + "/Saved_Models/Model3"
+#model_save_path = parent_cwd + "/Saved_Models/" + model_name
 #dcam.save_model(model, model_save_path)
-#load_path = parent_cwd + "/Saved_Models/Model1"
+#load_path = parent_cwd + "/Saved_Models/" + model_name
 #model = dcam.load_model_(load_path)
 
 print("Getting CNN output for noisy test set inputs...")
@@ -98,11 +99,11 @@ print("Perfectly reconstructing filtered test set audio & saving to memory...")
 test_train_set_audio_rebuilt = ap.rebuild_audio( x_test_train )
 test_test_set_audio_rebuilt = ap.rebuild_audio( x_test_test )
 
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Validation.wav", rate = fs, data = audio_time_series_test_noisy_train.astype('int16'))
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Validation.wav", rate = fs, data = test_train_set_audio_rebuilt)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Noisy_Validation.wav", rate = fs, data = audio_time_series_test_noisy_train.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Filtered_Validation.wav", rate = fs, data = test_train_set_audio_rebuilt)
 
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Noisy_Test.wav", rate = fs, data = audio_time_series_test_noisy_test.astype('int16'))
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Noisy_Test.wav", rate = fs, data = audio_time_series_test_noisy_test.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
 
 sdr_db_actual = ap.sdr_computation( target_speech = audio_time_series_test, distorted_speech = audio_time_series_test_noisy_test )
 sdr_db_estimated = ap.sdr_computation( target_speech = test_test_set_audio_rebuilt, distorted_speech = audio_time_series_test_noisy_test )
