@@ -13,11 +13,11 @@ def create_model(input_shape, filter_size):
 	
 	model = Sequential()
 	
-	model.add(Conv1D(filters = 64, kernel_size = filter_size, padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 
-	model.add(Conv1D(filters = 64, kernel_size = filter_size, padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 	
@@ -34,7 +34,7 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 	model.fit(	train_inputs, train_labels,
             	epochs = epochs,
                 batch_size = batch_size,
-                shuffle = False,
+                shuffle = True,
                 validation_data=(validation_inputs, validation_labels),
                 callbacks=[checkpointer])
     
