@@ -48,6 +48,11 @@ def load_audio_files( audio_folder_path, chapter_names, noise_names ):
 	
 	return chapters, noise
 
+def load_audio( audio_folder_path, audio_filename )
+	file_path = audio_folder_path + audio_filename
+	fs, audio_time_series = scipy.io.wavfile.read(file_path)
+	return audio_time_series, fs
+	
 def concatenate_audio( names, dict ):
 
 	arrays_to_concatenate = []
@@ -136,3 +141,11 @@ def sdr_computation( target_speech, distorted_speech ):
 	sdr = 10*np.log10(A_target_2 / A_noisedistortion_2)
 	
 	return(sdr)
+	
+def generate_input( audio_time_series, fs, frame_time, train_mu, train_std ):
+	
+	x_frames = generate_frames( audio_time_series, fs, frame_time,  )
+	x_frames_scaled = scale_features( x_frames, train_mu, train_std )
+	x_frames_scaled_input = np.reshape(x_frames_scaled, (x_frames_scaled.shape[0], x_frames_scaled.shape[1], 1))
+	
+	return(x_frames_input)

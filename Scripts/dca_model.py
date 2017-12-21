@@ -8,24 +8,23 @@ from keras import backend as K
 from keras.layers import Activation
 import numpy as np
 from keras.callbacks import ModelCheckpoint
+from keras.callbacks import History 
+from keras.callbacks import EarlyStopping
 
-def create_model(input_shape, filter_size):
+def create_model(input_shape, num_filters_per_layer, filter_size_per_layer ):
 	
 	model = Sequential()
 	
-	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = num_filters_per_layer[0], kernel_size = filter_size_per_layer[0], padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 
-	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
-	model.add(BatchNormalization())
-	model.add(Activation('relu'))
+	for num_filters, filter_size in zip(num_filters_per_layer[1:], filter_size_per_layer[1:]): 
+		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same'))
+		model.add(BatchNormalization())
+		model.add(Activation('relu'))
 	
-	model.add(Conv1D(filters = 256, kernel_size = filter_size, padding='same', input_shape = input_shape))
-	model.add(BatchNormalization())
-	model.add(Activation('relu'))
-	
-	model.add(Conv1D(1, kernel_size  = filter_size, padding='same'))
+	model.add(Conv1D(1, kernel_size = filter_size_per_layer[0], padding='same'))
 	
 	return(model)
 	
@@ -33,18 +32,19 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
 	
-	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose=1, mode = 'min', save_best_only=True)
+	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose = 1, mode = 'min', save_best_only = True)
+	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 10, verbose = 1, mode='auto')
 
-	model.fit(	train_inputs, train_labels,
-            	epochs = epochs,
-                batch_size = batch_size,
-                shuffle = True,
-                validation_data=(validation_inputs, validation_labels),
-                callbacks=[checkpointer])
+	history = model.fit(	train_inputs, train_labels,
+            				epochs = epochs,
+                			batch_size = batch_size,
+                			shuffle = True,
+                			validation_data = (validation_inputs, validation_labels),
+                			callbacks = [checkpointer, early_stopping])
     
 	model = load_model(filepath)
 
-	return(model)
+	return(model, history)
 
 def save_model( model, save_path ):
 	model.save(save_path)

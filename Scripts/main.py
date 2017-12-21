@@ -7,82 +7,55 @@ import os
 print("Getting paths to audio files...")
 cwd = os.getcwd()
 parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
-audio_folder_path = parent_cwd + "/Audio_Files"
+audio_folder_path = parent_cwd + "/Audio_Files/"
 
-print("Loading audio files...")
-chapter_names = ["Chapter1", "Chapter2_5_Min"]
-noise_names = ["Chapter1_Babble", "Chapter2_Babble_Train_5_Min", "Chapter2_Babble_Testing_5_Min"]
-chapters, noise = ap.load_audio_files( audio_folder_path, chapter_names, noise_names )
+print("Creating training, validation, and test sets...")
+snr_db = 5
+frame_time = 0.020
 
-print("Creating training & test sets...")
-training_chapter_names = ["Chapter1"]
-training_noise_names = ["Chapter1_Babble"]
-audio_time_series_train, fs = ap.concatenate_audio( training_chapter_names, chapters )
+# Generate training set
+audio_time_series_train, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter1.wav")
+audio_time_series_train_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter1_Babble.wav")
+audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_train, audio_time_series_train_noise, snr_db)
 train_mu = np.mean( audio_time_series_train )
 train_std = np.std( audio_time_series_train )
 
-audio_time_series_train_noise, fs = ap.concatenate_audio( training_noise_names, noise )
+train_clean = ap.generate_input(  audio_time_series_train, fs, frame_time, train_mu, train_std )
+train_noisy = ap.generate_input(  audio_time_series_train_noisy, fs, frame_time, train_mu, train_std )
 
-snr_db = 5
-
-audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_train, audio_time_series_train_noise, snr_db)
-
-x_train = ap.generate_frames( audio_time_series_train, fs, frame_time = 0.020 )
-x_train_scaled = ap.scale_features( x_train, train_mu, train_std )
-x_train_scaled_input = np.reshape(x_train_scaled, (x_train_scaled.shape[0], x_train_scaled.shape[1], 1))
-
-x_train_noisy = ap.generate_frames( audio_time_series_train_noisy, fs, frame_time = 0.020 )
-x_train_noisy_scaled = ap.scale_features( x_train_noisy, train_mu, train_std )
-x_train_noisy_scaled_input = np.reshape(x_train_noisy_scaled, (x_train_noisy_scaled.shape[0], x_train_noisy_scaled.shape[1], 1))
-
-test_chapter_names = ["Chapter2_5_Min"]
-test_train_noise_names = ["Chapter2_Babble_Train_5_Min"]
-test_test_noise_names = ["Chapter2_Babble_Testing_5_Min"]
-audio_time_series_test, fs = ap.concatenate_audio( test_chapter_names, chapters )
-audio_time_series_test_noise_train, fs = ap.concatenate_audio( test_train_noise_names, noise )
-audio_time_series_test_noise_test, fs = ap.concatenate_audio( test_test_noise_names, noise )
-
-audio_time_series_validation = audio_time_series_test[240*fs:]
-audio_time_series_validation_noise = audio_time_series_test_noise_test[240*fs:]
-audio_time_series_test = audio_time_series_test[0:60*fs]
-
+# Generate validation set
+audio_time_series_validation, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min.wav")
+audio_time_series_validation_noise = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min_Babble.wav")
 audio_time_series_validation_noisy = ap.combine_clean_and_noise(audio_time_series_validation, audio_time_series_validation_noise, snr_db)
-audio_time_series_test_noisy_train = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_train, snr_db)
-audio_time_series_test_noisy_test = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_test, snr_db)
 
-x_validation = ap.generate_frames( audio_time_series_validation, fs, frame_time = 0.020 )
-x_validation_scaled = ap.scale_features( x_validation, train_mu, train_std )
-x_validation_scaled_input = np.reshape(x_validation_scaled, (x_validation_scaled.shape[0], x_validation_scaled.shape[1], 1))
+validation_clean = ap.generate_input(  audio_time_series_validation, fs, frame_time, train_mu, train_std )
+validation_noisy = ap.generate_input(  audio_time_series_validation_noisy, fs, frame_time, train_mu, train_std )
 
-x_validation_noisy = ap.generate_frames( audio_time_series_validation_noisy, fs, frame_time = 0.020 )
-x_validation_noisy_scaled = ap.scale_features( x_validation_noisy, train_mu, train_std )
-x_validation_noisy_scaled_input = np.reshape(x_validation_noisy_scaled, (x_validation_noisy_scaled.shape[0], x_validation_noisy_scaled.shape[1], 1))
+# Generate test set
+audio_time_series_test = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min.wav")
+audio_time_series_test_noise = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min_Babble.wav")
+audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_test, snr_db)
 
-x_test_noisy_train = ap.generate_frames( audio_time_series_test_noisy_train, fs, frame_time = 0.020 )
-x_test_noisy_train_scaled = ap.scale_features( x_test_noisy_train, train_mu, train_std )
-x_test_noisy_train_scaled_input = np.reshape(x_test_noisy_train_scaled, (x_test_noisy_train_scaled.shape[0], x_test_noisy_train_scaled.shape[1], 1))
-
-x_test_noisy_test = ap.generate_frames( audio_time_series_test_noisy_test, fs, frame_time = 0.020 )
-x_test_noisy_test_scaled = ap.scale_features( x_test_noisy_test, train_mu, train_std )
-x_test_noisy_test_scaled_input = np.reshape(x_test_noisy_test_scaled, (x_test_noisy_test_scaled.shape[0], x_test_noisy_test_scaled.shape[1], 1))
+test_clean = ap.generate_input(  audio_time_series_test, fs, frame_time, train_mu, train_std )
+test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, train_mu, train_std )
 
 print("Preparing neural network for training...")
-input_shape = (x_train_noisy.shape[0], 1)
-filter_size = int(0.005*fs)
-model = dcam.create_model( input_shape, filter_size )
+input_shape = (train_noisy.shape[0], 1)
+filter_size_per_layer = [int(0.005*fs), int(0.005*fs)]
+num_filters_per_layer = [256, 256]
+model = dcam.create_model( input_shape, num_filters_per_layer, filter_size_per_layer )
 epochs = 125
 batch_size = 100
-
-model_name = "Model6"
+model_name = "Model7"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
-model = dcam.train_model( 	model = model, 
-							train_inputs = x_train_noisy_scaled_input, 
-							train_labels = x_train_scaled_input, 
+model, history = dcam.train_model( 	model = model, 
+							train_inputs = train_noisy, 
+							train_labels = train_clean, 
 							epochs = epochs, 
 							batch_size = batch_size,
-							validation_inputs = x_validation_noisy_scaled_input,
-							validation_labels = x_validation_scaled_input,
+							validation_inputs = validation_noisy,
+							validation_labels = validation_clean,
 							filepath = model_save_path)
 
 print( "Saving (Loading) trained model..." )
@@ -91,23 +64,11 @@ print( "Saving (Loading) trained model..." )
 #load_path = parent_cwd + "/Saved_Models/" + model_name
 #model = dcam.load_model_(load_path)
 
-print("Getting CNN output for noisy test set inputs...")
-x_test_train = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_train_scaled_input)) + train_mu
-x_test_test = (train_std * dcam.get_output_multiple_batches(model, x_test_noisy_test_scaled_input)) + train_mu
+print("Getting CNN output for noisy test set input...")
+test_filtered_frames = (train_std * dcam.get_output_multiple_batches(model, test_noisy)) + train_mu
 
 print("Perfectly reconstructing filtered test set audio & saving to memory...")
-test_train_set_audio_rebuilt = ap.rebuild_audio( x_test_train )
-test_test_set_audio_rebuilt = ap.rebuild_audio( x_test_test )
+test_filtered = ap.rebuild_audio( test_denoised_frames )
 
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Noisy_Validation.wav", rate = fs, data = audio_time_series_test_noisy_train.astype('int16'))
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Filtered_Validation.wav", rate = fs, data = test_train_set_audio_rebuilt)
-
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Noisy_Test.wav", rate = fs, data = audio_time_series_test_noisy_test.astype('int16'))
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_Filtered_Test.wav", rate = fs, data = test_test_set_audio_rebuilt)
-
-sdr_db_actual = ap.sdr_computation( target_speech = audio_time_series_test, distorted_speech = audio_time_series_test_noisy_test )
-sdr_db_estimated = ap.sdr_computation( target_speech = test_test_set_audio_rebuilt, distorted_speech = audio_time_series_test_noisy_test )
-
-print("The SDR of the actual speech sample is: " + str(sdr_db_actual) + " dB.")
-print("The SDR of the estimated speech sample is: " + str(sdr_db_estimated) + " dB.")
-print("The relative power accuracy is: " + str(sdr_db_estimated - sdr_db_actual) + " dB.")
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_NoisyTest.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
