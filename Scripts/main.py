@@ -25,15 +25,15 @@ train_noisy = ap.generate_input(  audio_time_series_train_noisy, fs, frame_time,
 
 # Generate validation set
 audio_time_series_validation, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min.wav")
-audio_time_series_validation_noise = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min_Babble.wav")
+audio_time_series_validation_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min_Babble.wav")
 audio_time_series_validation_noisy = ap.combine_clean_and_noise(audio_time_series_validation, audio_time_series_validation_noise, snr_db)
 
 validation_clean = ap.generate_input(  audio_time_series_validation, fs, frame_time, train_mu, train_std )
 validation_noisy = ap.generate_input(  audio_time_series_validation_noisy, fs, frame_time, train_mu, train_std )
 
 # Generate test set
-audio_time_series_test = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min.wav")
-audio_time_series_test_noise = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min_Babble.wav")
+audio_time_series_test, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min.wav")
+audio_time_series_test_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min_Babble.wav")
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise_test, snr_db)
 
 test_clean = ap.generate_input(  audio_time_series_test, fs, frame_time, train_mu, train_std )
