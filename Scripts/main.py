@@ -68,7 +68,7 @@ print("Getting CNN output for noisy test set input...")
 test_filtered_frames = (train_std * dcam.get_output_multiple_batches(model, test_noisy)) + train_mu
 
 print("Perfectly reconstructing filtered test set audio & saving to memory...")
-test_filtered = ap.rebuild_audio( test_denoised_frames )
+test_filtered = ap.rebuild_audio( test_filtered_frames )
 
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_NoisyTest.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
