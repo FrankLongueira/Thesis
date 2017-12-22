@@ -42,9 +42,9 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
 filter_size_per_layer = [int(0.005*fs), int(0.005*fs)]
-num_filters_per_layer = [10, 10]
+num_filters_per_layer = [256, 256]
 model = dcam.create_model( input_shape, num_filters_per_layer, filter_size_per_layer )
-epochs = 10
+epochs = 125
 batch_size = 100
 model_name = "Model7"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
