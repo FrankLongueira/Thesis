@@ -90,7 +90,7 @@ def summary_statistics( model_name, history, frame_time, snr_db,
 	print( "\tFilter Size for Output Layer: " + str( filter_size_output_layer ) )
 	print( "\tFrame Time: " + frame_time*1000 + str( " ms" ) )
 	print( "\tTotal Epochs: " + str(epochs) )
-	print( "\tBatch Size: " + str(batch_size) + " examples
+	print( "\tBatch Size: " + str(batch_size) + " examples"
 	print( "\tSNR: " + str( snr_db ) + str( " dB" ) )
 	print( "\tBest Epoch: " + str(  best_epoch_index + 1 ) )
 	print( "\tValidation Loss: " + str( best_val_loss ) )
