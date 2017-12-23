@@ -11,20 +11,20 @@ from keras.callbacks import ModelCheckpoint
 from keras.callbacks import History 
 from keras.callbacks import EarlyStopping
 
-def create_model(input_shape, num_filters_per_layer, filter_size_per_layer ):
+def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer ):
 	
 	model = Sequential()
 	
-	model.add(Conv1D(filters = num_filters_per_layer[0], kernel_size = filter_size_per_layer[0], padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 
-	for num_filters, filter_size in zip(num_filters_per_layer[1:], filter_size_per_layer[1:]): 
+	for num_filters, filter_size in zip(num_filters_per_hidden_layer[1:], filter_size_per_hidden_layer[1:]): 
 		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same'))
 		model.add(BatchNormalization())
 		model.add(Activation('relu'))
 	
-	model.add(Conv1D(1, kernel_size = filter_size_per_layer[0], padding='same'))
+	model.add(Conv1D(1, kernel_size = filter_size_output_layer, padding='same'))
 	
 	return(model)
 	
@@ -33,7 +33,7 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
 	
 	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose = 1, mode = 'min', save_best_only = True)
-	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 10, verbose = 1, mode='auto')
+	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 20, verbose = 1, mode='auto')
 
 	history = model.fit(	train_inputs, train_labels,
             				epochs = epochs,
@@ -76,3 +76,23 @@ def get_output_multiple_batches(model, input_frames, batch_size = 100):
 	output_frames_concatenated = np.concatenate( batches_output_frames_holder, axis = 0 )
 	
 	return(output_frames_concatenated)
+	
+def summary_statistics( model_name, history, frame_time, snr_db, 
+						num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
+						epochs, batch_size):
+	best_val_loss = min( history.history["val_loss"] )				
+	best_epoch_index = history.history["val_loss"].index( best_val_loss )
+	best_train_loss = history.history["loss"][ best_epoch_index ]
+	
+	print( "\tFCNN Name: " + model_name )
+	print( "\tNumber of Filters Per Hidden Layer: " + ','.join(map(str, num_filters_per_hidden_layer)) ) 
+	print( "\tFilter Size Per Hidden Layer: " + ','.join(map(str, filter_size_per_hidden_layer)) )
+	print( "\tFilter Size for Output Layer: " + str( filter_size_output_layer ) )
+	print( "\tFrame Time: " + frame_time*1000 + str( " ms" ) )
+	print( "\tTotal Epochs: " + str(epochs) )
+	print( "\tBatch Size: " + str(batch_size) + " examples
+	print( "\tSNR: " + str( snr_db ) + str( " dB" ) )
+	print( "\tBest Epoch: " + str(  best_epoch_index + 1 ) )
+	print( "\tValidation Loss: " + str( best_val_loss ) )
+	print( "Training Loss: " + str( best_train_loss ) )
+	
