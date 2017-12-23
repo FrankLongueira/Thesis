@@ -42,10 +42,10 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
 filter_size_per_hidden_layer = [int(0.005*fs), int(0.005*fs)]
-num_filters_per_hidden_layer = [3, 3]
+num_filters_per_hidden_layer = [256, 256]
 filter_size_output_layer = int(0.005*fs)
 model = dcam.create_model( input_shape, num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer )
-epochs = 10
+epochs = 125
 batch_size = 100
 model_name = "Model_Testing"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
@@ -78,5 +78,5 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "
 print("Computing and printing summary statistics:")
 print("\n")
 dcam.summary_statistics( model_name, history, frame_time, snr_db, 
-					num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
-					epochs, batch_size)
+						 num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
+						 epochs, batch_size)

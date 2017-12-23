@@ -88,7 +88,7 @@ def summary_statistics( model_name, history, frame_time, snr_db,
 	print( "\tNumber of Filters Per Hidden Layer: " + ','.join(map(str, num_filters_per_hidden_layer)) ) 
 	print( "\tFilter Size Per Hidden Layer: " + ','.join(map(str, filter_size_per_hidden_layer)) )
 	print( "\tFilter Size for Output Layer: " + str( filter_size_output_layer ) )
-	print( "\tFrame Time: " + frame_time*1000 + str( " ms" ) )
+	print( "\tFrame Time: " + str( frame_time*1000 ) + str( " ms" ) )
 	print( "\tTotal Epochs: " + str(epochs) )
 	print( "\tBatch Size: " + str(batch_size) + " examples" )
 	print( "\tSNR: " + str( snr_db ) + " dB")
