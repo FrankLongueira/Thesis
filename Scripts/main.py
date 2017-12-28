@@ -46,7 +46,7 @@ filter_size_output_layer = 0.005
 model = dcam.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
 epochs = 150
 batch_size = 100
-model_name = "Model_Testing"
+model_name = "Model1"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 model, history = dcam.train_model( 	model = model, 
@@ -70,8 +70,8 @@ test_filtered_frames = (train_std * dcam.get_output_multiple_batches(model, test
 print("Perfectly reconstructing filtered test set audio & saving to memory...")
 test_filtered = ap.rebuild_audio( test_filtered_frames )
 
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_NoisyTest.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_NoisyTest.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
 
 print("Computing and printing summary statistics:")
 print("\n")
