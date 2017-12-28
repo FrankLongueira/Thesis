@@ -2,7 +2,6 @@ import audio_preprocessing as ap
 import dca_model as dcam
 import numpy as np
 import scipy.io.wavfile
-import os 
 
 print("Getting paths to audio files...")
 cwd = os.getcwd()
@@ -32,8 +31,8 @@ validation_clean = ap.generate_input(  audio_time_series_validation, fs, frame_t
 validation_noisy = ap.generate_input(  audio_time_series_validation_noisy, fs, frame_time, train_mu, train_std )
 
 # Generate test set
-audio_time_series_test, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min.wav")
-audio_time_series_test_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min_Babble.wav")
+audio_time_series_test, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_1_Min.wav")
+audio_time_series_test_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_1_Min_Babble.wav")
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
 
 test_clean = ap.generate_input(  audio_time_series_test, fs, frame_time, train_mu, train_std )
@@ -41,11 +40,11 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-filter_size_per_hidden_layer = [int(0.005*fs), int(0.005*fs)]
+filter_size_per_hidden_layer = [0.005, 0.005]
 num_filters_per_hidden_layer = [256, 256]
-filter_size_output_layer = int(0.005*fs)
-model = dcam.create_model( input_shape, num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer )
-epochs = 125
+filter_size_output_layer = 0.005
+model = dcam.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
+epochs = 150
 batch_size = 100
 model_name = "Model_Testing"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
@@ -59,7 +58,6 @@ model, history = dcam.train_model( 	model = model,
 							validation_labels = validation_clean,
 							filepath = model_save_path)
 
-print(history.history['val_loss'])
 print( "Saving (Loading) trained model..." )
 #model_save_path = parent_cwd + "/Saved_Models/" + model_name
 #dcam.save_model(model, model_save_path)

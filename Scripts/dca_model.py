@@ -33,7 +33,7 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
 	
 	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose = 1, mode = 'min', save_best_only = True)
-	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 20, verbose = 1, mode='auto')
+	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 15, verbose = 1, mode='auto')
 
 	history = model.fit(	train_inputs, train_labels,
             				epochs = epochs,
@@ -85,7 +85,7 @@ def summary_statistics( model_name, history, frame_time, snr_db,
 	best_train_loss = history.history["loss"][ best_epoch_index ]
 	
 	print( "\tFCNN Name: " + model_name )
-	print( "\tNumber of Filters Per Hidden Layer: " + ','.join(map(str, num_filters_per_hidden_layer)) ) 
+	print( "\tNumber of Filters Per Hidden Layer: " + ' ms, '.join(map(str, list(np.array(num_filters_per_hidden_layer)*1000))) ) 
 	print( "\tFilter Size Per Hidden Layer: " + ','.join(map(str, filter_size_per_hidden_layer)) )
 	print( "\tFilter Size for Output Layer: " + str( filter_size_output_layer ) )
 	print( "\tFrame Time: " + str( frame_time*1000 ) + str( " ms" ) )
@@ -94,5 +94,5 @@ def summary_statistics( model_name, history, frame_time, snr_db,
 	print( "\tSNR: " + str( snr_db ) + " dB")
 	print( "\tBest Epoch: " + str(  best_epoch_index + 1 ) )
 	print( "\tValidation Loss: " + str( best_val_loss ) )
-	print( "Training Loss: " + str( best_train_loss ) )
+	print( "\tTraining Loss: " + str( best_train_loss ) )
 	
