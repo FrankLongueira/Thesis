@@ -75,8 +75,7 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + mod
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
 
 print("Computing and printing summary statistics:")
-print("\n")
-summary_stats_filename = parent_cwd + "/Saved_Models/Model_Description.txt"
+summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 
 cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
 						 num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
