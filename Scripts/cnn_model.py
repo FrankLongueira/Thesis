@@ -98,7 +98,7 @@ def summary_statistics( filename, model_name, history, frame_time, snr_db,
 	print( "\tTraining Loss: " + str( best_train_loss ) )
 	print( "\tValidation Loss: " + str( best_val_loss ) )
 	print("\n")
-	with open(filename, "w") as text_file:
+	with open(filename, "a") as text_file:
 		text_file.write( "FCNN Name: " + model_name )
 		text_file.write( "\n" )
 		text_file.write( "Number of Filters Per Hidden Layer: " + ', '.join(map(str, num_filters_per_hidden_layer) )) 
