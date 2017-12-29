@@ -75,6 +75,8 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + mod
 
 print("Computing and printing summary statistics:")
 print("\n")
-dcam.summary_statistics( model_name, history, frame_time, snr_db, 
+summary_stats_filename = parent_cwd + "/Saved_Models/Model_Description.txt"
+
+dcam.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
 						 num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 epochs, batch_size)
