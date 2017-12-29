@@ -2,6 +2,7 @@ import audio_preprocessing as ap
 import cnn_model as cnn
 import numpy as np
 import scipy.io.wavfile
+import os
 
 print("Getting paths to audio files...")
 cwd = os.getcwd()
