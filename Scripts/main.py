@@ -88,5 +88,6 @@ for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 	epochs, batch_size)
 	
+	audio_test_files_directory = parent_cwd + "/Audio_Files/Test_Files/"
 	os.chdir(parent_cwd + "/Audio_Files/Test_Files")		 	
-	call(["./PESQ", "+16000", "CleanTest.wav", model_name + "_Filtered_Test.wav"])
+	call([audio_test_files_directory + "PESQ", "+16000", audio_test_files_directory + "CleanTest.wav", audio_test_files_directory + model_name + "_Filtered_Test.wav"])
