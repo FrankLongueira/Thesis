@@ -77,7 +77,6 @@ for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	print("Perfectly reconstructing filtered test set audio & saving to memory...")
 	test_filtered = ap.rebuild_audio( test_filtered_frames )
 
-	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/CleanTest.wav", rate = fs, data = audio_time_series_test.astype('int16'))
 	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_NoisyTest.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
 	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
 
@@ -88,6 +87,5 @@ for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 	epochs, batch_size)
 	
-	audio_test_files_directory = parent_cwd + "/Audio_Files/Test_Files/"
 	os.chdir(parent_cwd + "/Audio_Files/Test_Files")		 	
-	call([audio_test_files_directory + "PESQ", "+16000", audio_test_files_directory + "CleanTest.wav", audio_test_files_directory + model_name + "_Filtered_Test.wav"])
+	call(["./PESQ", "+16000", "CleanTest.wav", model_name + "_FilteredTest.wav"])
