@@ -45,7 +45,7 @@ print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
 filter_size_per_hidden_layer = [0.005, 0.005]
 filter_size_output_layer = 0.005
-epochs = 125
+epochs = 1
 batch_size = 100
 
 list_num_filters_per_hidden_layer = [ [2], [2, 2] ]
