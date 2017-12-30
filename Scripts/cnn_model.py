@@ -33,7 +33,7 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
 	
 	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose = 1, mode = 'min', save_best_only = True)
-	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 15, verbose = 1, mode='auto')
+	early_stopping = EarlyStopping(monitor = 'val_loss', min_delta = 0, patience = 20, verbose = 1, mode='auto')
 
 	history = model.fit(	train_inputs, train_labels,
             				epochs = epochs,
