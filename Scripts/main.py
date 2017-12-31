@@ -48,7 +48,9 @@ filter_size_output_layer = 0.005
 epochs = 1
 batch_size = 100
 
-list_num_filters_per_hidden_layer = [ [2], [2, 2] ]
+list_num_filters_per_hidden_layer = [ [1], [2], [3] ]
+
+#list_num_filters_per_hidden_layer = [ [50], [100], [200], [300], [400], [500] ]
 i = 0
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
@@ -77,7 +79,7 @@ for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	print("Perfectly reconstructing filtered test set audio & saving to memory...")
 	test_filtered = ap.rebuild_audio( test_filtered_frames )
 
-	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "NoisyTest.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
+	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyTest_5dB.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
 	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
 
 	print("Computing and printing summary statistics:")
