@@ -49,7 +49,8 @@ epochs = 125
 batch_size = 100
 
 list_num_filters_per_hidden_layer = [ [600], [700], [800], [900], [1000] ]
-i = 0
+i = 6
+#i = 11
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
 	model_name = "Model" + str(i)
