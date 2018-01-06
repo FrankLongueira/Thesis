@@ -13,6 +13,8 @@ from keras.callbacks import EarlyStopping
 
 def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer ):
 	
+	K.clear_session()
+	
 	model = Sequential()
 	
 	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', input_shape = input_shape))
