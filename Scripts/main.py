@@ -48,8 +48,8 @@ filter_size_output_layer = 0.005
 epochs = 125
 batch_size = 100
 
-list_num_filters_per_hidden_layer = [ [50, 50, 50], [100, 100, 100], [200, 200, 200] ]
-i = 17
+list_num_filters_per_hidden_layer = [ [100, 100, 100], [200, 200, 200] ]
+i = 18
 #i = 20
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
