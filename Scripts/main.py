@@ -43,14 +43,14 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005]
+filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
 epochs = 125
 batch_size = 100
 
-list_num_filters_per_hidden_layer = [ [50, 50, 50, 50, 50, 50, 50], [100, 100, 100, 100, 100, 100, 100], [200, 200, 200, 200, 200, 200, 200] ]
-i = 29
-#i = 32
+list_num_filters_per_hidden_layer = [ [12, 25, 50, 100, 200], [50, 100, 100, 100, 200], [50, 50, 100, 100, 200] ]
+i = 32
+#i = 35
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
 	model_name = "Model" + str(i)
@@ -60,7 +60,7 @@ for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	model, history = cnn.train_model( 	model = model, 
 										train_inputs = train_noisy, 
 										train_labels = train_clean, 
-										epochs = epochs, 
+										epochs = epochs,
 										batch_size = batch_size,
 										validation_inputs = validation_noisy,
 										validation_labels = validation_clean,
