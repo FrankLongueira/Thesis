@@ -43,15 +43,16 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
-filter_size_output_layer = 0.005
 epochs = 125
 batch_size = 100
 
-list_num_filters_per_hidden_layer = [ [12, 25, 50, 100, 200], [50, 100, 100, 100, 200], [50, 50, 100, 100, 200] ]
-i = 32
-#i = 35
-for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
+num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
+list_filter_size_per_hidden_layer = [ [0.002, 0.002, 0.002, 0.002, 0.002], [0.001, 0.002, 0.003, 0.004, 0.005], [0.001, 0.002, 0.004, 0.008, 0.016] ]
+filter_size_output_layer = 0.005
+
+i = 35
+#i = 38
+for filter_size_per_hidden_layer in list_filter_size_per_hidden_layer:
 	i += 1
 	model_name = "Model" + str(i)
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
