@@ -32,7 +32,6 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	
 def train_model( model, train_inputs, train_labels, epochs, batch_size, validation_inputs, validation_labels, filepath ):
 	
-	model = multi_gpu_model(model, gpus = 2 )
 	model.compile(optimizer = 'adam', loss='mean_squared_error')
 	
 	checkpointer = ModelCheckpoint(filepath = filepath, monitor = "val_loss", verbose = 1, mode = 'min', save_best_only = True)
