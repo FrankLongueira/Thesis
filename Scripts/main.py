@@ -5,6 +5,7 @@ import scipy.io.wavfile
 import os
 from subprocess import call
 
+os.environ["CUDA_VISIBLE_DEVICES"]="0,4"
 
 print("Getting paths to audio files...")
 cwd = os.getcwd()
@@ -47,10 +48,10 @@ epochs = 125
 batch_size = 100
 
 num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
-list_filter_size_per_hidden_layer = [ [0.003, 0.003, 0.005, 0.005, 0.008], [0.008, 0.008, 0.008, 0.008, 0.008], [0.005, 0.005, 0.008, 0.008, 0.012], [0.008, 0.008, 0.012, 0.012, 0.016] ]
+list_filter_size_per_hidden_layer = [ [0.008, 0.008, 0.008, 0.008, 0.008], [0.005, 0.005, 0.008, 0.008, 0.012], [0.008, 0.008, 0.012, 0.012, 0.016] ]
 filter_size_output_layer = 0.005
 
-i = 38
+i = 39
 #i = 41
 for filter_size_per_hidden_layer in list_filter_size_per_hidden_layer:
 	i += 1
