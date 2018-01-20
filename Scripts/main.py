@@ -5,7 +5,7 @@ import scipy.io.wavfile
 import os
 from subprocess import call
 
-os.environ["CUDA_VISIBLE_DEVICES"]="0,4"
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 print("Getting paths to audio files...")
 cwd = os.getcwd()
