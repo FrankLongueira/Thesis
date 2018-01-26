@@ -45,13 +45,13 @@ input_shape = (train_noisy.shape[1], 1)
 epochs = 125
 batch_size = 100
 
-num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
+list_num_filters_per_hidden_layer = [[12, 12, 12, 12, 12], [25, 25, 25, 25, 25], [12, 25, 50, 50, 50], [12, 25, 50, 100, 100]]
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
-list_filter_size_output_layer = [0.001, 0.002, 0.003, 0.007, 0.010]
+filter_size_output_layer = 0.005
 
-i = 42
-#i = 47
-for filter_size_output_layer in list_filter_size_output_layer:
+i = 47
+#i = 51
+for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
 	model_name = "Model" + str(i)
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
