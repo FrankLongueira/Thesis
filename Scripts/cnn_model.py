@@ -1,15 +1,11 @@
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv1D, MaxPooling1D, UpSampling1D
+from keras.layers import Conv1D, MaxPooling1D, UpSampling1D, Activation, LeakyReLU, PReLU
 from keras.layers.normalization import BatchNormalization
-from keras.layers import LSTM
 from keras.models import load_model
 from keras import backend as K
-from keras.layers import Activation
 import numpy as np
-from keras.callbacks import ModelCheckpoint
-from keras.callbacks import History 
-from keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint, History, EarlyStopping
 
 def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer ):
 	
@@ -19,12 +15,16 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	
 	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
-	model.add(Activation('relu'))
-
+	#model.add(Activation('relu'))
+	model.add(LeakyReLU(alpha=0.3))
+	#model.add(PReLU())
+	
 	for num_filters, filter_size in zip(num_filters_per_hidden_layer[1:], filter_size_per_hidden_layer[1:]): 
 		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same'))
 		model.add(BatchNormalization())
-		model.add(Activation('relu'))
+		#model.add(Activation('relu'))
+		model.add(LeakyReLU(alpha=0.3))
+		#model.add(PReLU())
 	
 	model.add(Conv1D(1, kernel_size = filter_size_output_layer, padding='same'))
 	
