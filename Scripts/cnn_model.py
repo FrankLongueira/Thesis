@@ -1,6 +1,6 @@
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv1D, MaxPooling1D, UpSampling1D, Activation, LeakyReLU, PReLU
+from keras.layers import Conv1D, MaxPooling1D, UpSampling1D, Activation, LeakyReLU, PReLU, Dropout
 from keras.layers.normalization import BatchNormalization
 from keras.models import load_model
 from keras import backend as K
@@ -13,18 +13,20 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	
 	model = Sequential()
 	
-	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', input_shape = input_shape))
+	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', kernel_regularizer = regularizers.l2(0.01), input_shape = input_shape))
 	model.add(BatchNormalization())
-	#model.add(Activation('relu'))
+	model.add(Activation('relu'))
 	#model.add(LeakyReLU(alpha=0.3))
-	model.add(PReLU())
+	#model.add(PReLU())
+	#model.add(Dropout(rate = 0.2))
 	
 	for num_filters, filter_size in zip(num_filters_per_hidden_layer[1:], filter_size_per_hidden_layer[1:]): 
-		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same'))
+		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same', kernel_regularizer = regularizers.l2(0.01)))
 		model.add(BatchNormalization())
-		#model.add(Activation('relu'))
+		model.add(Activation('relu'))
 		#model.add(LeakyReLU(alpha=0.3))
-		model.add(PReLU())
+		#model.add(PReLU())
+		#model.add(Dropout(rate = 0.2))
 	
 	model.add(Conv1D(1, kernel_size = filter_size_output_layer, padding='same'))
 	
