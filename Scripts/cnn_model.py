@@ -2,6 +2,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv1D, MaxPooling1D, UpSampling1D, Activation, LeakyReLU, PReLU, Dropout
 from keras.layers.normalization import BatchNormalization
+from keras import regularizers
 from keras.models import load_model
 from keras import backend as K
 import numpy as np
