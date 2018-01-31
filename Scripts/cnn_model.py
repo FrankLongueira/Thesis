@@ -14,7 +14,7 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	
 	model = Sequential()
 	
-	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', kernel_regularizer = regularizers.l2(0.01), input_shape = input_shape))
+	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', kernel_regularizer = regularizers.l2(0.001), input_shape = input_shape))
 	model.add(BatchNormalization())
 	model.add(Activation('relu'))
 	#model.add(LeakyReLU(alpha=0.3))
@@ -22,7 +22,7 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	#model.add(Dropout(rate = 0.2))
 	
 	for num_filters, filter_size in zip(num_filters_per_hidden_layer[1:], filter_size_per_hidden_layer[1:]): 
-		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same', kernel_regularizer = regularizers.l2(0.01)))
+		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same', kernel_regularizer = regularizers.l2(0.001)))
 		model.add(BatchNormalization())
 		model.add(Activation('relu'))
 		#model.add(LeakyReLU(alpha=0.3))
