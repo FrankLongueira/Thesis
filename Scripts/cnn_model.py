@@ -22,7 +22,7 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	model.add(Dropout(rate = 0.2))
 	
 	for num_filters, filter_size in zip(num_filters_per_hidden_layer[1:], filter_size_per_hidden_layer[1:]): 
-		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same')
+		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same'))
 		model.add(BatchNormalization())
 		model.add(Activation('relu'))
 		#model.add(LeakyReLU(alpha=0.3))
