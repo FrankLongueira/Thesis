@@ -49,11 +49,11 @@ list_num_filters_per_hidden_layer = [[12, 25, 50, 100, 200]]
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
 
-i = 57
-#i = 58
+i = 58
+#i = 59
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
-	model_name = "Model" + str(i) + "_Dropout"
+	model_name = "Model" + str(i) + "_NoBatchNorm"
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 	model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )

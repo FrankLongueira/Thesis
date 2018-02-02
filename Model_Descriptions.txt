@@ -550,3 +550,147 @@ Best Epoch: 35
 Training Loss: 0.0173482101595
 Validation Loss: 0.029756418076
 
+FCNN Name: Model47
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 10.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 79
+Training Loss: 0.0165246400055
+Validation Loss: 0.0302214058016
+
+FCNN Name: Model48
+Number of Filters Per Hidden Layer: 12, 12, 12, 12, 12
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 14
+Training Loss: 0.0264314161017
+Validation Loss: 0.036288243591
+
+FCNN Name: Model49
+Number of Filters Per Hidden Layer: 25, 25, 25, 25, 25
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 28
+Training Loss: 0.0197623902292
+Validation Loss: 0.0307615531225
+
+FCNN Name: Model50
+Number of Filters Per Hidden Layer: 12, 25, 50, 50, 50
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 18
+Training Loss: 0.0188613251669
+Validation Loss: 0.0299731893226
+
+FCNN Name: Model51
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 15
+Training Loss: 0.0188315142691
+Validation Loss: 0.0296181725086
+
+FCNN Name: Model52_LeakyReLU
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 92
+Training Loss: 0.0173351126243
+Validation Loss: 0.0294125637096
+
+FCNN Name: Model53_PReLU
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 29
+Training Loss: 0.0153066175394
+Validation Loss: 0.0276513302435
+
+FCNN Name: Model54_L2Reg01
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 13
+Training Loss: 0.0514715544016
+Validation Loss: 0.0656088362514
+
+FCNN Name: Model55_L2Reg001
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 56
+Training Loss: 0.0393308375858
+Validation Loss: 0.0510931969793
+
+FCNN Name: Model56_L2Reg0001
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Training Loss: 0.0308066195386
+Validation Loss: 0.0404142666277
+
+FCNN Name: Model57_L2Reg00001
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 3
+Training Loss: 0.0368523566805
+Validation Loss: 0.0417677298389
+
+FCNN Name: Model58_Dropout
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 54
+Training Loss: 0.0222515759182
+Validation Loss: 0.0301706925653
+
