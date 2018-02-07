@@ -48,7 +48,7 @@ def load_audio_files( audio_folder_path, chapter_names, noise_names ):
 	
 	return chapters, noise
 
-def load_audio( audio_folder_path, audio_filename )
+def load_audio( audio_folder_path, audio_filename ):
 	file_path = audio_folder_path + audio_filename
 	fs, audio_time_series = scipy.io.wavfile.read(file_path)
 	return audio_time_series, fs
