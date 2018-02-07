@@ -78,7 +78,7 @@ for model_name in model_names:
 	with open(filename, "a") as text_file:
 		text_file.write( "FCNN Name: " + model_name )
 		text_file.write( "\n" )
-		text_file.write( "Number of Parameters: " + model.count_params() )
+		text_file.write( "Number of Parameters: " + str(model.count_params()) )
 		
 	os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 	call( ["./PESQ", "+16000", "CleanValidation.wav", model_name + "_FilteredValidation.wav"] )
