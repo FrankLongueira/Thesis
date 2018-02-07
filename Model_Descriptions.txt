@@ -694,3 +694,39 @@ Best Epoch: 54
 Training Loss: 0.0222515759182
 Validation Loss: 0.0301706925653
 
+FCNN Name: Model59_NoBatchNorm
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 68
+Training Loss: 0.0201052577696
+Validation Loss: 0.0342193565688
+
+FCNN Name: Model60_BatchNormAfterReLu
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 59
+Training Loss: 0.0154882814243
+Validation Loss: 0.0294190503657
+
+FCNN Name: Model61_NoReLu
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 21
+Training Loss: 0.0780030059684
+Validation Loss: 0.092817997847
+

@@ -1,0 +1,119 @@
+FCNN Name: Model25
+Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 29
+Training Loss: 0.0149619835036
+Validation Loss: 0.0280033512336
+
+FCNN Name: Model26
+Number of Filters Per Hidden Layer: 200, 200, 200, 200, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 35
+Training Loss: 0.0146398135166
+Validation Loss: 0.0281914634397
+
+FCNN Name: Model27
+Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 35
+Training Loss: 0.016485615045
+Validation Loss: 0.028403555044
+
+FCNN Name: Model30
+Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50, 50
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 20
+Training Loss: 0.0179147224677
+Validation Loss: 0.0284523007359
+
+FCNN Name: Model31
+Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 29
+Training Loss: 0.0141895399333
+Validation Loss: 0.0266052821079
+
+FCNN Name: Model32
+Number of Filters Per Hidden Layer: 200, 200, 200, 200, 200, 200, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 24
+Training Loss: 0.0137040113014
+Validation Loss: 0.0284680044364
+
+FCNN Name: Model33
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 69
+Training Loss: 0.0150186144539
+Validation Loss: 0.0284648104539
+
+FCNN Name: Model38
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 1.0, 2.0, 4.0, 8.0, 16.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 46
+Training Loss: 0.0144523108945
+Validation Loss: 0.027507254274
+
+FCNN Name: Model41
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 8.0, 8.0, 12.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 72
+Training Loss: 0.0127350104231
+Validation Loss: 0.0283544569146
+
+FCNN Name: Model53_PReLU
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 29
+Training Loss: 0.0153066175394
+Validation Loss: 0.0276513302435
