@@ -48,6 +48,7 @@ model_name = "Model_62"
 num_filters_per_hidden_layer = [25, 25, 25, 25, 25]
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
+model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
 model, history = cnn.train_model( 	model = model, 
@@ -58,7 +59,6 @@ model, history = cnn.train_model( 	model = model,
 									validation_inputs = validation_noisy,
 									validation_labels = validation_clean,
 									filepath = model_save_path)
-model_save_path = parent_cwd + "/Saved_Models/" + model_name
 cnn.save_model(model, model_save_path)
 #scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "CleanValidation.wav", rate = fs, data = audio_time_series_validation.astype('int16'))
 #scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_5dB.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16'))
