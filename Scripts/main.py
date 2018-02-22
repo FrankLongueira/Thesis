@@ -42,9 +42,9 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-epochs = 125
+epochs = 1s
 batch_size = 100
-model_name = "Model_62"
+model_name = "Model_63"
 num_filters_per_hidden_layer = [25, 25, 25, 25, 25]
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
@@ -59,7 +59,7 @@ model, history = cnn.train_model( 	model = model,
 									validation_inputs = validation_noisy,
 									validation_labels = validation_clean,
 									filepath = model_save_path)
-cnn.save_model(model, model_save_path)
+#cnn.save_model(model, model_save_path)
 #scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "CleanValidation.wav", rate = fs, data = audio_time_series_validation.astype('int16'))
 #scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_5dB.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16'))
 
@@ -68,20 +68,20 @@ cnn.save_model(model, model_save_path)
 #	print( "Loading trained model named: " + model_name + "..." )
 #	load_path = parent_cwd + "/Saved_Models/" + model_name
 #	model = cnn.load_model_(load_path)
-print("Getting CNN output for noisy test set input...")
-test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model, test_noisy)) + train_mu
-print("Perfectly reconstructing filtered test set audio & saving to memory...")
-test_filtered = ap.rebuild_audio( test_filtered_frames )
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
-print("Computing and printing summary statistics:")
+#print("Getting CNN output for noisy test set input...")
+#test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model, test_noisy)) + train_mu
+#print("Perfectly reconstructing filtered test set audio & saving to memory...")
+#test_filtered = ap.rebuild_audio( test_filtered_frames )
+#scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest.wav", rate = fs, data = test_filtered)
+#print("Computing and printing summary statistics:")
 	#filename = parent_cwd + "/Saved_Models/Model_Descriptions_Top10.txt"
 	#with open(filename, "a") as text_file:
 	#	text_file.write( "FCNN Name: " + model_name )
 	#	text_file.write( "\n" )
 	#	text_file.write( "Number of Parameters: " + str(model.count_params()) )
 		
-os.chdir(parent_cwd + "/Audio_Files/Test_Files")
-call( ["./PESQ", "+16000", "CleanTest.wav", model_name + "_FilteredTest.wav"] )
+#os.chdir(parent_cwd + "/Audio_Files/Test_Files")
+#call( ["./PESQ", "+16000", "CleanTest.wav", model_name + "_FilteredTest.wav"] )
 
 #os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 #call( ["./PESQ", "+16000", "CleanValidation.wav", "NoisyValidation_5dB.wav"] )
