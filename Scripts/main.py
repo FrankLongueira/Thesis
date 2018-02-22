@@ -47,9 +47,9 @@ batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
 
-list_num_filters_per_hidden_layer = [[6, 6, 6, 6, 6], [12, 12, 12, 12, 12], [25, 25, 25, 25, 25]]
+list_num_filters_per_hidden_layer = [[25, 25, 50, 50, 100], [25, 25, 50, 50, 50], [15, 25, 35, 45, 55], [10, 20, 30, 40, 50]]
 
-i = 61
+i = 64
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	i += 1
 	model_name = "Model_" + str(i)
