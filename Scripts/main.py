@@ -42,16 +42,16 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-epochs = 1
+epochs = 150
 batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
 
-#list_num_filters_per_hidden_layer = [[6, 6, 6, 6, 6], [12, 12, 12, 12, 12], [25, 25, 25, 25, 25]]
-list_num_filters_per_hidden_layer = [[6, 6, 6, 6, 6]]
+list_num_filters_per_hidden_layer = [[6, 6, 6, 6, 6], [12, 12, 12, 12, 12], [25, 25, 25, 25, 25]]
 
-i = 1409490349
+i = 61
 for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
+	i += 1
 	model_name = "Model_" + str(i)
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
 	model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
@@ -93,8 +93,3 @@ for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
 	#	text_file.write( "FCNN Name: " + model_name )
 	#	text_file.write( "\n" )
 	#	text_file.write( "Number of Parameters: " + str(model.count_params()) )
-		
-
-
-
-
