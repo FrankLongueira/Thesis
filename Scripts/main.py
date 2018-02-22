@@ -88,9 +88,8 @@ model, history = cnn.train_model( 	model = model,
 
 summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 
-cnn.summary_statistics( summary_stats_filename, model, model_name, history, frame_time, snr_db, 
+cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
 						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 	epochs, batch_size)
-	
 
 
