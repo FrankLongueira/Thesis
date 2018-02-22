@@ -42,7 +42,7 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-epochs = 1s
+epochs = 1
 batch_size = 100
 model_name = "Model_63"
 num_filters_per_hidden_layer = [25, 25, 25, 25, 25]
