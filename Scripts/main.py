@@ -63,7 +63,7 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "Cl
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_5dB_1min.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16')[0:(60*fs)])
 
 model_names = ["Model25", "Model26", "Model27", "Model30", "Model31", "Model33", "Model38", "Model41", "Model53", "Model_65"]
-for num_filters_per_hidden_layer in list_num_filters_per_hidden_layer:
+for model_name in model_names:
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
 	model = cnn.load_model_(model_save_path)
 
