@@ -131,7 +131,7 @@ Best Epoch: 29
 Training Loss: 0.0153066175394
 Validation Loss: 0.0276513302435
 Number of Parameters: 2,266,736
-Validation PESQ: 
+Validation PESQ: 2.458
 
 FCNN Name: Model_65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -145,4 +145,4 @@ Best Epoch: 35
 Training Loss: 0.0171705612745
 Validation Loss: 0.0283289428108
 Number of Parameters: 761,251
-Validation PESQ: 
+Validation PESQ: 2.437
