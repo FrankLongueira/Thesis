@@ -15,7 +15,7 @@ Training Loss: 0.0149619835036
 Validation Loss: 0.0280033512336
 Number of Parameters: 3,218,501
 Validation PESQ: 2.470
-Validation WER: 
+Validation WER: 12.45%
 
 FCNN Name: Model26
 Number of Filters Per Hidden Layer: 200, 200, 200, 200, 200
@@ -31,7 +31,7 @@ Training Loss: 0.0146398135166
 Validation Loss: 0.0281914634397
 Number of Parameters: 12,837,001
 Validation PESQ: 2.445
-Validation WER: 
+Validation WER: 14.64%
 
 FCNN Name: Model27
 Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50
@@ -47,7 +47,7 @@ Training Loss: 0.016485615045
 Validation Loss: 0.028403555044
 Number of Parameters: 1,009,501
 Validation PESQ: 2.390
-Validation WER: 
+Validation WER: 14.91%
 
 FCNN Name: Model30
 Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50, 50
