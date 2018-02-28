@@ -10,9 +10,9 @@ cwd = os.getcwd()
 parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
 
-print("Creating training, validation, and test sets...")
-snr_db = 5
-frame_time = 0.020
+#print("Creating training, validation, and test sets...")
+#snr_db = 5
+#frame_time = 0.020
 """
 # Generate training set
 audio_time_series_train, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter1.wav")
@@ -75,9 +75,10 @@ num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
 #	test_filtered = ap.rebuild_audio( test_filtered_frames )
 #	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredValidation.wav", rate = fs, data = test_filtered)
 #	scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredValidation_1min.wav", rate = fs, data = test_filtered[0:(60*fs)])
-os.chdir(parent_cwd + "/Audio_Files/Test_Files")
+os.chdir(parent_cwd + "/Speech_to_Text")
 #call( ["./PESQ", "+16000", "CleanValidation_1min.wav", model_name + "_FilteredValidation_1min.wav"] )
-call( ["./PESQ", "+16000", "CleanValidation_1min.wav", "NoisyValidation_5dB_1min.wav"] )
+call( ["python", "wer.py", "clean_validation.txt", "noisy_validation.txt"] )
+call( ["python", "wer.py", "clean_validation.txt", "model65_validation.txt"] )
 
 #	summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 #	cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 

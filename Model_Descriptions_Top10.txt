@@ -1,3 +1,5 @@
+*** Reference: Noisy_Validation PESQ: 1.764 ***
+
 FCNN Name: Model25
 Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
