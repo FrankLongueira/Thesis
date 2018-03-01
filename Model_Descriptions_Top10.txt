@@ -161,8 +161,19 @@ Best Epoch: 35
 Training Loss: 0.0171705612745
 Validation Loss: 0.0283289428108
 Number of Parameters: 761,251
-Validation PESQ: 2.437
-Validation WER: 11.63%
+Validation PESQ (1-minute): 2.437
+Validation WER (5-minutes): 11.63%
 Test PESQ: 2.395
 Test WER: 12.88%
+Woman Speaker #2 (Tricia G):
+	Reference PESQ (1-minute):
+	Reference WER (5-minutes):
+	Filtered PESQ (1-minute):
+	Filtered WER (5-minutes):
+	
+Man Speaker #1 (Richard Kilmer):
+	Reference PESQ (1-minute):
+	Reference WER (5-minutes):
+	Filtered PESQ (1-minute):
+	Filtered WER (5-minutes):
 ********************************** BEST MODEL ********************************************
