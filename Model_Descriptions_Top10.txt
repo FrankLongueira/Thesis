@@ -171,11 +171,12 @@ Woman Speaker #2 (Tricia G) w/ no fine-tuning:
 	Filtered PESQ (1-minute): 2.143
 
 	Noisy Reference WER (5-minutes): 11.48%
-	Filtered WER (5-minutes):
+	Filtered WER (5-minutes): 14.02%
 	
 Man Speaker #1 (Richard Kilmer) w/ no fine-tuning:
-	Reference PESQ (1-minute): 
-	Reference WER (5-minutes): 
-	Filtered PESQ (1-minute): 
+	Noisy Reference PESQ (1-minute):
+	Filtered PESQ (1-minute):
+
+	Noisy Reference WER (5-minutes):
 	Filtered WER (5-minutes):
 ********************************** BEST MODEL ********************************************
