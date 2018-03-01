@@ -166,14 +166,15 @@ Validation WER (5-minutes): 11.63%
 Test PESQ: 2.395
 Test WER: 12.88%
 Woman Speaker #2 (Tricia G):
-	Reference PESQ (1-minute):
+	Reference PESQ (1-minute): 1.874
+	Filtered PESQ (1-minute): 2.143
+
 	Reference WER (5-minutes):
-	Filtered PESQ (1-minute):
 	Filtered WER (5-minutes):
 	
 Man Speaker #1 (Richard Kilmer):
-	Reference PESQ (1-minute):
-	Reference WER (5-minutes):
-	Filtered PESQ (1-minute):
+	Reference PESQ (1-minute): 
+	Reference WER (5-minutes): 
+	Filtered PESQ (1-minute): 
 	Filtered WER (5-minutes):
 ********************************** BEST MODEL ********************************************
