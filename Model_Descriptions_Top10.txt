@@ -143,11 +143,11 @@ Validation PESQ: 2.458
 Validation WER: 15.05%
 
 ********************************** BEST MODEL ********************************************
-*** Reference: Noisy_Validation PESQ: 1.764 ***
-*** Reference: Noisy_Validation WER: 24.35% ***
+*** Noisy Reference Validation PESQ: 1.764 ***
+*** Noisy Reference Validation WER: 24.35% ***
 
-*** Reference: Noisy_Test PESQ: 1.782 ***
-*** Reference: Noisy_Test WER:  23.96% ***
+*** Noisy Reference Test PESQ: 1.782 ***
+*** Noisy Reference Test WER:  23.96% ***
 
 FCNN Name: Model_65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -161,18 +161,19 @@ Best Epoch: 35
 Training Loss: 0.0171705612745
 Validation Loss: 0.0283289428108
 Number of Parameters: 761,251
-Validation PESQ (1-minute): 2.437
-Validation WER (5-minutes): 11.63%
-Test PESQ: 2.395
-Test WER: 12.88%
-Woman Speaker #2 (Tricia G):
-	Reference PESQ (1-minute): 1.874
+Filtered Validation PESQ (1-minute): 2.437
+Filtered Validation WER (5-minutes): 11.63%
+Filtered Test PESQ: 2.395
+Filtered Test WER: 12.88%
+
+Woman Speaker #2 (Tricia G) w/ no fine-tuning:
+	Noisy Reference PESQ (1-minute): 1.874
 	Filtered PESQ (1-minute): 2.143
 
-	Reference WER (5-minutes):
+	Noisy Reference WER (5-minutes): 11.48%
 	Filtered WER (5-minutes):
 	
-Man Speaker #1 (Richard Kilmer):
+Man Speaker #1 (Richard Kilmer) w/ no fine-tuning:
 	Reference PESQ (1-minute): 
 	Reference WER (5-minutes): 
 	Filtered PESQ (1-minute): 
