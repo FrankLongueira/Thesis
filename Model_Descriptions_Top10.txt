@@ -1,9 +1,3 @@
-*** Reference: Noisy_Validation PESQ: 1.764 ***
-*** Reference: Noisy_Validation WER: 24.35% ***
-
-*** Reference: Noisy_Test PESQ: 1.782 ***
-*** Reference: Noisy_Test WER:  ***
-
 FCNN Name: Model25
 Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
@@ -148,6 +142,13 @@ Number of Parameters: 2,266,736
 Validation PESQ: 2.458
 Validation WER: 15.05%
 
+********************************** BEST MODEL ********************************************
+*** Reference: Noisy_Validation PESQ: 1.764 ***
+*** Reference: Noisy_Validation WER: 24.35% ***
+
+*** Reference: Noisy_Test PESQ: 1.782 ***
+*** Reference: Noisy_Test WER:  23.96% ***
+
 FCNN Name: Model_65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
@@ -163,4 +164,5 @@ Number of Parameters: 761,251
 Validation PESQ: 2.437
 Validation WER: 11.63%
 Test PESQ: 2.395
-Test WER:
+Test WER: 12.88%
+********************************** BEST MODEL ********************************************
