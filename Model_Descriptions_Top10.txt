@@ -142,12 +142,7 @@ Number of Parameters: 2,266,736
 Validation PESQ: 2.458
 Validation WER: 15.05%
 
-********************************** BEST MODEL ********************************************
-*** Noisy Reference Validation PESQ: 1.764 ***
-*** Noisy Reference Validation WER: 24.35% ***
-
-*** Noisy Reference Test PESQ: 1.782 ***
-*** Noisy Reference Test WER:  23.96% ***
+********************************************** BEST MODEL **************************************************
 
 FCNN Name: Model_65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -161,22 +156,21 @@ Best Epoch: 35
 Training Loss: 0.0171705612745
 Validation Loss: 0.0283289428108
 Number of Parameters: 761,251
-Filtered Validation PESQ (1-minute): 2.437
-Filtered Validation WER (5-minutes): 11.63%
-Filtered Test PESQ: 2.395
-Filtered Test WER: 12.88%
 
+Woman Speaker #1 (Pamela N):
+	Noisy Validation Reference PESQ (1-minute): 1.764	Noisy Validation Reference WER (5-minutes): 24.35%
+	Filtered Validation PESQ (1-minute): 2.437			Filtered Validation WER (5-minutes): 11.63%
+	
+	Noisy Test Reference PESQ (1-minute): 1.782			Noisy Test Reference WER (5-minutes):  23.96%
+	Filtered Test PESQ (1-minute): 2.395				Filtered Test WER (5-minutes): 12.88%
+	
 Woman Speaker #2 (Tricia G) w/ no fine-tuning:
-	Noisy Reference PESQ (1-minute): 1.874
-	Filtered PESQ (1-minute): 2.143
+	Noisy Reference PESQ (1-minute): 1.874				Noisy Reference WER (5-minutes): 11.48%
+	Filtered PESQ (1-minute): 2.143						Filtered WER (5-minutes): 14.02%
 
-	Noisy Reference WER (5-minutes): 11.48%
-	Filtered WER (5-minutes): 14.02%
 	
 Man Speaker #1 (Richard Kilmer) w/ no fine-tuning:
-	Noisy Reference PESQ (1-minute):
-	Filtered PESQ (1-minute):
-
-	Noisy Reference WER (5-minutes):
-	Filtered WER (5-minutes):
-********************************** BEST MODEL ********************************************
+	Noisy Reference PESQ (1-minute): 2.175				Noisy Reference WER (5-minutes): 22.49%
+	Filtered PESQ (1-minute): 2.163						Filtered WER (5-minutes): 24.90%
+	
+********************************************** BEST MODEL **************************************************
