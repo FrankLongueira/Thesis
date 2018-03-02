@@ -47,6 +47,7 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 #filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 #filter_size_output_layer = 0.005
 #num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
+#patience = 300
 
 #	model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
 #	model, history = cnn.train_model( 	model = model, 
@@ -56,7 +57,8 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 #										batch_size = batch_size,
 #										validation_inputs = validation_noisy,
 #										validation_labels = validation_clean,
-#										filepath = model_save_path)
+#										filepath = model_save_path,
+#										patience = patience)
 #	cnn.save_model(model, model_save_path)
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "RichardKilmer_5min.wav", rate = fs, data = audio_time_series_test.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "RichardKilmerNoisy_5dB_5min.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
