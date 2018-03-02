@@ -42,11 +42,12 @@ test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, t
 
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
-epochs = 150
+epochs = 300
 batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
 num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
+patience = 300
 
 model_name = "Model_65_0dB"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
@@ -59,7 +60,9 @@ model, history = cnn.train_model( 	model = model,
 									batch_size = batch_size,
 									validation_inputs = validation_noisy,
 									validation_labels = validation_clean,
-									filepath = model_save_path)
+									filepath = model_save_path,
+									patience = patience)
+									
 cnn.save_model(model, model_save_path)
 
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "CleanTest_5min_0dB.wav", rate = fs, data = audio_time_series_test.astype('int16'))
@@ -75,7 +78,7 @@ test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model, test_
 
 print("Perfectly reconstructing filtered test set audio & saving to memory...")
 test_filtered = ap.rebuild_audio( test_filtered_frames )
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_5min_odB.wav", rate = fs, data = test_filtered)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_5min_0dB.wav", rate = fs, data = test_filtered)
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_1min_0dB.wav", rate = fs, data = test_filtered[0:(60*fs)])
 os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 call( ["./PESQ", "+16000", "CleanTest_1min_0dB.wav", model_name + "_FilteredTest_1min_0dB.wav"] )
@@ -86,3 +89,4 @@ call( ["./PESQ", "+16000", "CleanTest_1min_0dB.wav", "NoisyTest_1min_0dB.wav"] )
 #						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 #						 	epochs, batch_size)
 	
+CleanTest_5min_0dB.wav,NoisyTest_5min_0dB.wav,Model65_0dB_FilteredTest_5min_0dB.wav
