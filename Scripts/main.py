@@ -46,10 +46,10 @@ epochs = 300
 batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
-num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
+num_filters_per_hidden_layer = [100, 100, 100, 100, 100]
 patience = 300
 
-model_name = "Model_65_0dB"
+model_name = "Model_65_0dB_INCREASEDCOMPLEXITY"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
@@ -84,9 +84,7 @@ os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 call( ["./PESQ", "+16000", "CleanTest_1min_0dB.wav", model_name + "_FilteredTest_1min_0dB.wav"] )
 call( ["./PESQ", "+16000", "CleanTest_1min_0dB.wav", "NoisyTest_1min_0dB.wav"] )
 
-#	summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
-#	cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
-#						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
-#						 	epochs, batch_size)
-	
-CleanTest_5min_0dB.wav,NoisyTest_5min_0dB.wav,Model65_0dB_FilteredTest_5min_0dB.wav
+summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
+cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
+						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
+						 	epochs, batch_size)
