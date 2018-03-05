@@ -46,7 +46,7 @@ epochs = 300
 batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
-num_filters_per_hidden_layer = [100, 100, 100, 100, 100]
+num_filters_per_hidden_layer = [100, 100, 100, 100, 100, 100]
 patience = 40
 
 model_name = "Model_65_0dB_INCREASEDCOMPLEXITY"
