@@ -12,7 +12,7 @@ Training Loss: 0.0149619835036
 Validation Loss: 0.0280033512336
 Number of Parameters: 3,218,501
 Validation PESQ: 2.470
-Validation WER: 12.45%
+Validation WER: 29.001%
 
 FCNN Name: Model26
 Number of Filters Per Hidden Layer: 200, 200, 200, 200, 200
@@ -28,7 +28,7 @@ Training Loss: 0.0146398135166
 Validation Loss: 0.0281914634397
 Number of Parameters: 12,837,001
 Validation PESQ: 2.445
-Validation WER: 14.64%
+Validation WER: 28.591%
 
 FCNN Name: Model27
 Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50
@@ -44,7 +44,7 @@ Training Loss: 0.016485615045
 Validation Loss: 0.028403555044
 Number of Parameters: 1,009,501
 Validation PESQ: 2.390
-Validation WER: 14.91%
+Validation WER: 26.402%
 
 FCNN Name: Model30
 Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50, 50
@@ -60,7 +60,7 @@ Training Loss: 0.0179147224677
 Validation Loss: 0.0284523007359
 Number of Parameters: 1,209,751
 Validation PESQ: 2.441
-Validation WER: 11.22%
+Validation WER: 31.464%
 
 FCNN Name: Model31
 Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100, 100, 100
@@ -76,7 +76,7 @@ Training Loss: 0.0141895399333
 Validation Loss: 0.0266052821079
 Number of Parameters: 4,819,501
 Validation PESQ: 2.490
-Validation WER: 13.27%
+Validation WER: 31.737%
 
 FCNN Name: Model33
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
@@ -92,7 +92,7 @@ Training Loss: 0.0150186144539
 Validation Loss: 0.0284648104539
 Number of Parameters: 2,142,896
 Validation PESQ: 2.421
-Validation WER: 14.64%
+Validation WER: 28.728%
 
 FCNN Name: Model38
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
@@ -108,7 +108,7 @@ Training Loss: 0.0144523108945
 Validation Loss: 0.027507254274
 Number of Parameters: 5,867,728
 Validation PESQ: 2.452
-Validation WER: 12.86%
+Validation WER: 29.001%
 
 FCNN Name: Model41
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
@@ -124,7 +124,7 @@ Training Loss: 0.0127350104231
 Validation Loss: 0.0283544569146
 Number of Parameters: 4,682,896
 Validation PESQ: 2.422
-Validation WER: 13.95%
+Validation WER: 28.454%
 
 FCNN Name: Model53_PReLU
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
@@ -140,7 +140,7 @@ Training Loss: 0.0153066175394
 Validation Loss: 0.0276513302435
 Number of Parameters: 2,266,736
 Validation PESQ: 2.458
-Validation WER: 15.05%
+Validation WER: 25.718%
 
 ********************************************** BEST MODEL **************************************************
 
@@ -158,19 +158,16 @@ Validation Loss: 0.0283289428108
 Number of Parameters: 761,251
 
 Woman Speaker #1 (Pamela N):
-	Noisy Validation Reference PESQ (1-minute): 1.764	Noisy Validation Reference WER (5-minutes): 24.35%
-	Filtered Validation PESQ (1-minute): 2.437			Filtered Validation WER (5-minutes): 11.63%
 	
-	Noisy Test Reference PESQ (1-minute): 1.782			Noisy Test Reference WER (5-minutes):  23.96%
-	Filtered Test PESQ (1-minute): 2.395				Filtered Test WER (5-minutes): 12.88%
+	SNR = 5 dB
 	
-Woman Speaker #2 (Tricia G) w/ no fine-tuning:
-	Noisy Reference PESQ (1-minute): 1.874				Noisy Reference WER (5-minutes): 11.48%
-	Filtered PESQ (1-minute): 2.143						Filtered WER (5-minutes): 14.02%
-
+	Noisy Validation Reference PESQ (1-minute): 1.764	Noisy Validation Reference WER (5-minutes): 50.479%
+	Filtered Validation PESQ (1-minute): 2.437			Filtered Validation WER (5-minutes): 29.275%
 	
-Man Speaker #1 (Richard Kilmer) w/ no fine-tuning:
-	Noisy Reference PESQ (1-minute): 2.175				Noisy Reference WER (5-minutes): 22.49%
-	Filtered PESQ (1-minute): 2.163						Filtered WER (5-minutes): 24.90%
+		
+	SNR = 0 dB
+	
+	Noisy Validation Reference PESQ (1-minute): 	Noisy Validation Reference WER (5-minutes): 
+	Filtered Validation PESQ (1-minute): 			Filtered Validation WER (5-minutes): 
 	
 ********************************************** BEST MODEL **************************************************

@@ -16,12 +16,13 @@ def create_model(input_shape, num_filters_per_hidden_layer, filter_size_per_hidd
 	
 	model.add(Conv1D(filters = num_filters_per_hidden_layer[0], kernel_size = filter_size_per_hidden_layer[0], padding='same', input_shape = input_shape))
 	model.add(BatchNormalization())
-	model.add(Activation('relu'))
+	keras.layers.PReLU(shared_axes=[1])
 	
 	for num_filters, filter_size in zip(num_filters_per_hidden_layer[1:], filter_size_per_hidden_layer[1:]): 
 		model.add(Conv1D(filters = num_filters, kernel_size = filter_size, padding='same'))
 		model.add(BatchNormalization())
-		model.add(Activation('relu'))
+		keras.layers.PReLU(shared_axes=[1])
+
 
 	model.add(Conv1D(1, kernel_size = filter_size_output_layer, padding='same'))
 	
