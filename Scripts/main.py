@@ -30,9 +30,9 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "Cl
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "CleanValidation_1min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_validation.astype('int16')[0:(60*fs)])
 
 audio_time_series_validation_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min_Babble.wav")
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_1min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16')[0:(60*fs)])
 
 audio_time_series_validation_noisy = ap.combine_clean_and_noise(audio_time_series_validation, audio_time_series_validation_noise, snr_db)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_1min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16')[0:(60*fs)])
 
 validation_clean = ap.generate_input(  audio_time_series_validation, fs, frame_time, train_mu, train_std )
 validation_noisy = ap.generate_input(  audio_time_series_validation_noisy, fs, frame_time, train_mu, train_std )
