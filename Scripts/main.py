@@ -32,6 +32,7 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "Cl
 audio_time_series_validation_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter2_5_Min_Babble.wav")
 
 audio_time_series_validation_noisy = ap.combine_clean_and_noise(audio_time_series_validation, audio_time_series_validation_noise, snr_db)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_5min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyValidation_1min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_validation_noisy.astype('int16')[0:(60*fs)])
 
 validation_clean = ap.generate_input(  audio_time_series_validation, fs, frame_time, train_mu, train_std )
@@ -53,12 +54,12 @@ print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
 epochs = 300
 batch_size = 100
-filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005, 0.005]
+filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
-num_filters_per_hidden_layer = [25, 25, 50, 50, 100, 100]
+num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
 patience = 20
 
-model_name = "Model_53c_PReLU"
+model_name = "Model_53d_PReLU"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
