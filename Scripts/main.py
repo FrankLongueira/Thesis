@@ -61,7 +61,7 @@ num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
 patience = 20
 """
 
-model_names = ["Model_53_PReLU", "Model_53b_PReLU", "Model_53c_PReLU", "Model_53d_PReLU"]
+model_names = ["Model53_PReLU", "Model_53b_PReLU", "Model_53c_PReLU", "Model_53d_PReLU"]
 for model_name in model_names:
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
 	model = cnn.load_model_(model_save_path)
