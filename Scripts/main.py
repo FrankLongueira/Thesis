@@ -4,11 +4,12 @@ import numpy as np
 import scipy.io.wavfile
 import os
 from subprocess import call
-"""
+
 print("Getting paths to audio files...")
 cwd = os.getcwd()
 parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
+"""
 
 print("Creating training, validation, and test sets...")
 snr_db = 5
