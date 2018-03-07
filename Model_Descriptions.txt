@@ -814,3 +814,63 @@ Best Epoch: 61
 Training Loss: 0.01771422429
 Validation Loss: 0.0299328783405
 
+FCNN Name: Model_65_0dB_INCREASEDCOMPLEXITY
+Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 0 dB
+Best Epoch: 22
+Training Loss: 0.0350897318434
+Validation Loss: 0.0862613003506
+
+FCNN Name: Model_53b_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Training Loss: 0.0167125569588
+Validation Loss: 0.0286627422307
+
+FCNN Name: Model_53c_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 40
+Training Loss: 0.0145288172534
+Validation Loss: 0.0291572456891
+
+FCNN Name: Model_53c_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 24
+Training Loss: 0.0159617189242
+Validation Loss: 0.028751412553
+
+FCNN Name: Model_53d_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Training Loss: 0.0157915527726
+Validation Loss: 0.0285157191015
+
