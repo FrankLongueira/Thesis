@@ -9,10 +9,9 @@ print("Getting paths to audio files...")
 cwd = os.getcwd()
 parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
-"""
 
 print("Creating training, validation, and test sets...")
-snr_db = 5
+snr_db = 0
 frame_time = 0.020
 
 # Generate training set
@@ -57,18 +56,12 @@ epochs = 300
 batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
-num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
+num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
 patience = 20
-"""
 
-model_names = ["Model53_PReLU", "Model_53b_PReLU", "Model_53c_PReLU", "Model_53d_PReLU"]
-for model_name in model_names:
-	model_save_path = parent_cwd + "/Saved_Models/" + model_name
-	model = cnn.load_model_(model_save_path)
-	print(model.count_params())
-	#print(model.summary())
-"""	
+model_name = "Model53_PReLU" + str(snr_db)
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
+#model = cnn.load_model_(model_save_path)
 
 model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
 model, history = cnn.train_model( 	model = model, 
@@ -100,4 +93,3 @@ summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
 						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 	epochs, batch_size)
-"""
