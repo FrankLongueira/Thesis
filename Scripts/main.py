@@ -66,7 +66,7 @@ for model_name in model_names:
 	model_save_path = parent_cwd + "/Saved_Models/" + model_name
 	model = cnn.load_model_(model_save_path)
 	print(model.count_params())
-	print(model.summary())
+	#print(model.summary())
 """	
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
