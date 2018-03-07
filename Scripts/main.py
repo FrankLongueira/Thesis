@@ -4,7 +4,7 @@ import numpy as np
 import scipy.io.wavfile
 import os
 from subprocess import call
-
+"""
 print("Getting paths to audio files...")
 cwd = os.getcwd()
 parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
@@ -58,8 +58,14 @@ filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
 num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
 patience = 20
+"""
 
-model_name = "Model_53d_PReLU"
+model_names = ["Model_53_PReLU", "Model_53b_PReLU", "Model_53c_PReLU", "Model_53d_PReLU"]
+for model_name in model_names:
+	model = cnn.load_model_(model_save_path)
+	print(model.count_params())
+	print(model.summary())
+"""	
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 model = cnn.create_model( input_shape, num_filters_per_hidden_layer, map(int, list(np.array(filter_size_per_hidden_layer)*fs)), int(filter_size_output_layer*fs) )
@@ -92,3 +98,4 @@ summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
 						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 	epochs, batch_size)
+"""
