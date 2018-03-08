@@ -141,8 +141,55 @@ Validation Loss: 0.0276513302435
 Number of Parameters: 2,266,736
 Validation PESQ: 2.458
 Validation WER: 25.718%
+Validation PESQ (0 dB):
+Validation WER (0 dB):
 
-********************************************** BEST MODEL **************************************************
+FCNN Name: Model_53b_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Training Loss: 0.0167125569588
+Validation Loss: 0.0286627422307
+Number of Parameters: 761,501
+Validation PESQ: 2.443
+Validation WER: 27.633%
+
+FCNN Name: Model_53c_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 24
+Training Loss: 0.0159617189242
+Validation Loss: 0.028751412553
+Number of Parameters: 1,562,101
+Validation PESQ: 2.451
+Validation WER: 29.412%
+
+FCNN Name: Model_53d_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Training Loss: 0.0157915527726
+Validation Loss: 0.0285157191015
+Number of Parameters: 841,251
+Validation PESQ: 2.480
+Validation WER: 27.223%
+Validation PESQ (0 dB):
+Validation WER (0 dB):
 
 FCNN Name: Model_65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -155,19 +202,14 @@ SNR: 5 dB
 Best Epoch: 35
 Training Loss: 0.0171705612745
 Validation Loss: 0.0283289428108
-Number of Parameters: 761,251
+Number of Parameters: 761,251	
+SNR = 5 dB
+Validation PESQ: 2.437			
+Validation WER: 29.275%
+	
+********************************************** BEST MODEL **************************************************
 
-Woman Speaker #1 (Pamela N):
-	
-	SNR = 5 dB
-	
-	Noisy Validation Reference PESQ (1-minute): 1.764	Noisy Validation Reference WER (5-minutes): 50.479%
-	Filtered Validation PESQ (1-minute): 2.437			Filtered Validation WER (5-minutes): 29.275%
-	
-		
-	SNR = 0 dB
-	
-	Noisy Validation Reference PESQ (1-minute): 	Noisy Validation Reference WER (5-minutes): 
-	Filtered Validation PESQ (1-minute): 			Filtered Validation WER (5-minutes): 
-	
+Noisy Validation Reference PESQ (1-minute): 1.764	
+Noisy Validation Reference WER (5-minutes): 50.479%
+
 ********************************************** BEST MODEL **************************************************

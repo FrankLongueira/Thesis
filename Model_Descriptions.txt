@@ -846,18 +846,6 @@ Frame Time: 20.0 ms
 Total Epochs: 300
 Batch Size: 100 examples
 SNR: 5 dB
-Best Epoch: 40
-Training Loss: 0.0145288172534
-Validation Loss: 0.0291572456891
-
-FCNN Name: Model_53c_PReLU
-Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
-Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
-Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
-Total Epochs: 300
-Batch Size: 100 examples
-SNR: 5 dB
 Best Epoch: 24
 Training Loss: 0.0159617189242
 Validation Loss: 0.028751412553
