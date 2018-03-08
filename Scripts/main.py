@@ -45,6 +45,7 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "Cl
 
 audio_time_series_test_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min_Babble.wav")
 audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test, audio_time_series_test_noise, snr_db)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyTest_5min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16'))
 scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "NoisyTest_1min_" + str(snr_db) + "dB.wav", rate = fs, data = audio_time_series_test_noisy.astype('int16')[0:(60*fs)])
 
 test_clean = ap.generate_input(  audio_time_series_test, fs, frame_time, train_mu, train_std )
@@ -56,10 +57,10 @@ epochs = 300
 batch_size = 100
 filter_size_per_hidden_layer = [0.005, 0.005, 0.005, 0.005, 0.005]
 filter_size_output_layer = 0.005
-num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
+num_filters_per_hidden_layer = [25, 25, 50, 50, 100]
 patience = 20
 
-model_name = "Model53_PReLU" + str(snr_db)
+model_name = "Model_53d_PReLU" + str(snr_db)
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 #model = cnn.load_model_(model_save_path)
 
