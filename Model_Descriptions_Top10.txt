@@ -216,6 +216,8 @@ Noisy Validation Reference PESQ (1-minute): 1.764
 Noisy Validation Reference WER (5-minutes): 50.479%
 Noisy Validation Reference PESQ (1-minute) (0 dB): 1.382
 Noisy Validation Reference WER (5-minutes) (0 dB): 88.493%
+Noisy Validation Reference PESQ (1-minute) (-5 dB): 1.103
+Noisy Validation Reference WER (5-minutes) (-5 dB):
 
 FCNN Name: Model53_PReLU
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
@@ -255,4 +257,8 @@ Training Loss (0 dB): 0.0352021876569
 Validation Loss (0 dB): 0.0823882113324
 Validation PESQ (0 dB): 2.037
 Validation WER (0 dB): 63.699%
+Training Loss (-5 dB): 0.119671967316
+Validation Loss (-5 dB): 0.252999086193
+Validation PESQ (-5 dB): 1.314
+Validation WER (-5 dB):
 ********************************************** BEST MODEL **************************************************
