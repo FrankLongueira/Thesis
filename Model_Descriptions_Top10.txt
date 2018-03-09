@@ -141,8 +141,8 @@ Validation Loss: 0.0276513302435
 Number of Parameters: 2,266,736
 Validation PESQ: 2.458
 Validation WER: 25.718%
-Validation PESQ (0 dB):
-Validation WER (0 dB):
+Validation PESQ (0 dB): 2.056
+Validation WER (0 dB): 60.411%
 
 FCNN Name: Model_53b_PReLU
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -188,8 +188,11 @@ Validation Loss: 0.0285157191015
 Number of Parameters: 841,251
 Validation PESQ: 2.480
 Validation WER: 27.223%
-Validation PESQ (0 dB):
+Training Loss (0 dB): 0.0352021876569
+Validation Loss (0 dB): 0.0823882113324
+Validation PESQ (0 dB): 2.037
 Validation WER (0 dB):
+
 
 FCNN Name: Model_65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -211,5 +214,45 @@ Validation WER: 29.275%
 
 Noisy Validation Reference PESQ (1-minute): 1.764	
 Noisy Validation Reference WER (5-minutes): 50.479%
+Noisy Validation Reference PESQ (1-minute) (0 dB): 1.382
+Noisy Validation Reference WER (5-minutes) (0 dB): 88.493%
 
+FCNN Name: Model53_PReLU
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Activation Function: PReLU
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 29
+Training Loss: 0.0153066175394
+Validation Loss: 0.0276513302435
+Number of Parameters: 2,266,736
+Validation PESQ: 2.458
+Validation WER: 25.718%
+Training Loss (0 dB): 0.0329275182994
+Validation Loss (0 dB): 0.0830621913256
+Validation PESQ (0 dB): 2.056
+Validation WER (0 dB): 60.411%
+
+FCNN Name: Model_53d_PReLU
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Training Loss: 0.0157915527726
+Validation Loss: 0.0285157191015
+Number of Parameters: 841,251
+Validation PESQ: 2.480
+Validation WER: 27.223%
+Training Loss (0 dB): 0.0352021876569
+Validation Loss (0 dB): 0.0823882113324
+Validation PESQ (0 dB): 2.037
+Validation WER (0 dB): 63.699%
 ********************************************** BEST MODEL **************************************************

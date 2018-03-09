@@ -11,7 +11,7 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
 
 print("Creating training, validation, and test sets...")
-snr_db = 0
+snr_db = -5
 frame_time = 0.020
 
 # Generate training set
