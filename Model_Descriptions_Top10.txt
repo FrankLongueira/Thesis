@@ -209,35 +209,6 @@ Number of Parameters: 761,251
 SNR = 5 dB
 Validation PESQ: 2.437			
 Validation WER: 29.275%
-	
-********************************************** BEST MODEL **************************************************
-
-Noisy Validation Reference PESQ (1-minute): 1.764	
-Noisy Validation Reference WER (5-minutes): 50.479%
-Noisy Validation Reference PESQ (1-minute) (0 dB): 1.382
-Noisy Validation Reference WER (5-minutes) (0 dB): 88.493%
-Noisy Validation Reference PESQ (1-minute) (-5 dB): 1.103
-Noisy Validation Reference WER (5-minutes) (-5 dB):
-
-FCNN Name: Model53_PReLU
-Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
-Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
-Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
-Activation Function: PReLU
-Total Epochs: 125
-Batch Size: 100 examples
-SNR: 5 dB
-Best Epoch: 29
-Training Loss: 0.0153066175394
-Validation Loss: 0.0276513302435
-Number of Parameters: 2,266,736
-Validation PESQ: 2.458
-Validation WER: 25.718%
-Training Loss (0 dB): 0.0329275182994
-Validation Loss (0 dB): 0.0830621913256
-Validation PESQ (0 dB): 2.056
-Validation WER (0 dB): 60.411%
 
 FCNN Name: Model_53d_PReLU
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
@@ -260,5 +231,47 @@ Validation WER (0 dB): 63.699%
 Training Loss (-5 dB): 0.119671967316
 Validation Loss (-5 dB): 0.252999086193
 Validation PESQ (-5 dB): 1.314
-Validation WER (-5 dB):
+Validation WER (-5 dB): 96.849%
+
+********************************************** BEST MODEL **************************************************
+
+Noisy Validation Reference PESQ (1-minute): 1.764	
+Noisy Validation Reference WER (5-minutes): 50.479%
+Noisy Validation Reference PESQ (1-minute) (0 dB): 1.382
+Noisy Validation Reference WER (5-minutes) (0 dB): 88.493%
+Noisy Validation Reference PESQ (1-minute) (-5 dB): 1.103
+Noisy Validation Reference WER (5-minutes) (-5 dB): 98.493%
+
+FCNN Name: Model53_PReLU
+Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Activation Function: PReLU
+Total Epochs: 125
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 29
+Training Loss (5 dB): 0.0153066175394
+Validation Loss (5 dB): 0.0276513302435
+Training Loss (0 dB): 0.0329275182994
+Validation Loss (0 dB): 0.0830621913256
+Training Loss (-5 dB): 0.109046343979
+Validation Loss (-5 dB): 0.237691486046
+
+Number of Parameters: 2,266,736
+
+Validation PESQ (5 dB): 2.458
+Validation WER (5 dB): 25.718%
+Validation PESQ (0 dB): 2.056
+Validation WER (0 dB): 60.411%
+Validation PESQ (-5 dB): 1.395
+Validation WER (-5 dB): 94.110%
+
+Test PESQ (5 dB):
+Test WER (5 dB):
+Test PESQ (0 dB):
+Test WER (0 dB):
+Test PESQ (-5 dB):
+Test WER (-5 dB):
 ********************************************** BEST MODEL **************************************************
