@@ -4,5 +4,5 @@ GPU_Login.png
 *.pyc
 thesis_virtualenv/*
 useful_linux_commands.txt
-Saved_Models/Model_Descriptions.txt
+Saved_Models/*
 top10_models.xlsx

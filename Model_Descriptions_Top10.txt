@@ -234,25 +234,11 @@ Validation PESQ (-5 dB): 1.314
 Validation WER (-5 dB): 96.849%
 
 ********************************************** BEST MODEL **************************************************
-
-Noisy Validation Reference PESQ (1-minute): 1.764	
-Noisy Validation Reference WER (5-minutes): 50.479%
-Noisy Validation Reference PESQ (1-minute) (0 dB): 1.382
-Noisy Validation Reference WER (5-minutes) (0 dB): 88.493%
-Noisy Validation Reference PESQ (1-minute) (-5 dB): 1.103
-Noisy Validation Reference WER (5-minutes) (-5 dB): 98.493%
-
-Noisy Test Reference PESQ (1-minute): 
-Noisy Test Reference WER (5-minutes): 
-Noisy Test Reference PESQ (1-minute) (0 dB): 
-Noisy Test Reference WER (5-minutes) (0 dB): 
-Noisy Test Reference PESQ (1-minute) (-5 dB): 
-Noisy Test Reference WER (5-minutes) (-5 dB): 
-
-FCNN Name: Model53_PReLU
+FCNN Name: Model53
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
+Number of Parameters: 2,266,736
 Frame Time: 20.0 ms
 Activation Function: PReLU
 Total Epochs: 125
@@ -266,19 +252,31 @@ Validation Loss (0 dB): 0.0830621913256
 Training Loss (-5 dB): 0.109046343979
 Validation Loss (-5 dB): 0.237691486046
 
-Number of Parameters: 2,266,736
+Noisy Validation Reference PESQ (5 dB): 1.764	    Filtered Validation PESQ (5 dB): 2.458
+Noisy Validation Reference WER  (5 dB): 50.479%     Filtered Validation WER  (5 dB): 25.718%
+Noisy Validation Reference PESQ (0 dB): 1.382       Filtered Validation PESQ (0 dB): 2.056
+Noisy Validation Reference WER  (0 dB): 88.493%     Filtered Validation WER  (0 dB): 60.411%
+Noisy Validation Reference PESQ (-5 dB): 1.103      Filtered Validation PESQ (-5 dB): 1.395
+Noisy Validation Reference WER  (-5 dB): 98.493%    Filtered Validation WER  (-5 dB): 94.110%
 
-Validation PESQ (5 dB): 2.458
-Validation WER (5 dB): 25.718%
-Validation PESQ (0 dB): 2.056
-Validation WER (0 dB): 60.411%
-Validation PESQ (-5 dB): 1.395
-Validation WER (-5 dB): 94.110%
+Noisy Test Reference PESQ (5 dB): 1.782             Filtered Test PESQ (5 dB): 2.478
+Noisy Test Reference WER  (5 dB): 43.689%           Filtered Test WER  (5 dB): 25.243%
+Noisy Test Reference PESQ (0 dB): 1.444             Filtered Test PESQ (0 dB): 2.100
+Noisy Test Reference WER  (0 dB): 86.269%           Filtered Test WER  (0 dB): 58.391%
+Noisy Test Reference PESQ (-5 dB): 1.321            Filtered Test PESQ (-5 dB): 1.482
+Noisy Test Reference WER  (-5 dB): 97.503%          Filtered Test WER  (-5 dB): 94.452%
 
-Test PESQ (5 dB): 2.478
-Test WER (5 dB):
-Test PESQ (0 dB):
-Test WER (0 dB):
-Test PESQ (-5 dB):
-Test WER (-5 dB):
+New Speaker Noisy Test Reference PESQ (5 dB): 		 	New Speaker Filtered Test PESQ (5 dB):
+New Speaker Noisy Test Reference WER  (5 dB): 		    New Speaker Filtered Test WER  (5 dB):
+New Speaker Noisy Test Reference PESQ (0 dB):		    New Speaker Filtered Test PESQ (0 dB): 
+New Speaker Noisy Test Reference WER  (0 dB): 		    New Speaker Filtered Test WER  (0 dB):
+New Speaker Noisy Test Reference PESQ (-5 dB): 		    New Speaker Filtered Test PESQ (-5 dB): 
+New Speaker Noisy Test Reference WER  (-5 dB): 		    New Speaker Filtered Test WER  (-5 dB):
+
+Fine Tuned New Speaker Noisy Test Reference PESQ (5 dB): 		 	Fine Tuned New Speaker Filtered Test PESQ (5 dB):
+Fine Tuned New Speaker Noisy Test Reference WER  (5 dB): 		    Fine Tuned New Speaker Filtered Test WER  (5 dB):
+Fine Tuned New Speaker Noisy Test Reference PESQ (0 dB):		    Fine Tuned New Speaker Filtered Test PESQ (0 dB): 
+Fine Tuned New Speaker Noisy Test Reference WER  (0 dB): 		    Fine Tuned New Speaker Filtered Test WER  (0 dB):
+Fine Tuned New Speaker Noisy Test Reference PESQ (-5 dB): 		    Fine Tuned New Speaker Filtered Test PESQ (-5 dB): 
+Fine Tuned New Speaker Noisy Test Reference WER  (-5 dB): 		    Fine Tuned New Speaker Filtered Test WER  (-5 dB):
 ********************************************** BEST MODEL **************************************************
