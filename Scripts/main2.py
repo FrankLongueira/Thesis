@@ -61,7 +61,7 @@ filter_size_output_layer = 0.005
 num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
 patience = 20
 """
-model_name = "Model_53_PReLU" + str(snr_db)
+model_name = "Model53_PReLU" + str(snr_db)
 #model_name = "Model53_PReLU"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 model = cnn.load_model_(model_save_path)
