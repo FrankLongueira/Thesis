@@ -266,12 +266,12 @@ Noisy Test Reference WER  (0 dB): 86.269%           Filtered Test WER  (0 dB): 5
 Noisy Test Reference PESQ (-5 dB): 1.321            Filtered Test PESQ (-5 dB): 1.482
 Noisy Test Reference WER  (-5 dB): 97.503%          Filtered Test WER  (-5 dB): 94.452%
 
-New Speaker Noisy Test Reference PESQ (5 dB): 		 	New Speaker Filtered Test PESQ (5 dB):
-New Speaker Noisy Test Reference WER  (5 dB): 		    New Speaker Filtered Test WER  (5 dB):
-New Speaker Noisy Test Reference PESQ (0 dB):		    New Speaker Filtered Test PESQ (0 dB): 
-New Speaker Noisy Test Reference WER  (0 dB): 		    New Speaker Filtered Test WER  (0 dB):
-New Speaker Noisy Test Reference PESQ (-5 dB): 		    New Speaker Filtered Test PESQ (-5 dB): 
-New Speaker Noisy Test Reference WER  (-5 dB): 		    New Speaker Filtered Test WER  (-5 dB):
+New Speaker Noisy Test Reference PESQ (5 dB): 1.874 		 	New Speaker Filtered Test PESQ (5 dB): 2.215
+New Speaker Noisy Test Reference WER  (5 dB): 33.556%		    New Speaker Filtered Test WER  (5 dB): 25.134%
+New Speaker Noisy Test Reference PESQ (0 dB): 1.471		    	New Speaker Filtered Test PESQ (0 dB): 1.839
+New Speaker Noisy Test Reference WER  (0 dB): 72.326%		    New Speaker Filtered Test WER  (0 dB): 50.401%
+New Speaker Noisy Test Reference PESQ (-5 dB): 1.182 		    New Speaker Filtered Test PESQ (-5 dB): 1.437
+New Speaker Noisy Test Reference WER  (-5 dB): 94.652% 		    New Speaker Filtered Test WER  (-5 dB): 89.305%
 
 Fine Tuned New Speaker Noisy Test Reference PESQ (5 dB): 		 	Fine Tuned New Speaker Filtered Test PESQ (5 dB):
 Fine Tuned New Speaker Noisy Test Reference WER  (5 dB): 		    Fine Tuned New Speaker Filtered Test WER  (5 dB):

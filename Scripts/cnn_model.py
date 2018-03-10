@@ -46,6 +46,17 @@ def train_model( model, train_inputs, train_labels, epochs, batch_size, validati
 
 	return(model, history)
 
+def train_model_finetune( model, train_inputs, train_labels, epochs, batch_size ):
+	
+	model.compile(optimizer = 'adam', loss='mean_squared_error')
+	
+	history = model.fit(	train_inputs, train_labels,
+            				epochs = epochs,
+                			batch_size = batch_size,
+                			shuffle = True)
+    
+	return(model, history)
+
 def save_model( model, save_path ):
 	model.save(save_path)
 
