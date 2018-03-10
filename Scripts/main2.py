@@ -94,7 +94,7 @@ cnn.save_model(model_finetuned, model_save_path_new)
 model_name = model_name_new
 
 print("Getting CNN output for noisy test set input...")
-test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model, test_noisy)) + train_mu
+test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model_finetuned, test_noisy)) + train_mu
 
 print("Perfectly reconstructing filtered test set audio & saving to memory...")
 test_filtered = ap.rebuild_audio( test_filtered_frames )
