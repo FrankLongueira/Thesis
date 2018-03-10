@@ -11,7 +11,7 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
 
 print("Creating training, validation, and test sets...")
-snr_db = 0
+snr_db = -5
 frame_time = 0.020
 
 # Generate training set
@@ -91,8 +91,9 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + mod
 os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 call( ["./PESQ", "+16000", "CleanTest_1min_" + str(snr_db) + "dB.wav", "NoisyTest_1min_" + str(snr_db) + "dB.wav"] )
 call( ["./PESQ", "+16000", "CleanTest_1min_" + str(snr_db) + "dB.wav", model_name + "_FilteredTest_1min_" + str(snr_db) + "dB.wav"] )
-
+"""
 summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
 						 	num_filters_per_hidden_layer, filter_size_per_hidden_layer, filter_size_output_layer,
 						 	epochs, batch_size)
+"""

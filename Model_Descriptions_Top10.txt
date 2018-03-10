@@ -275,7 +275,7 @@ Validation WER (0 dB): 60.411%
 Validation PESQ (-5 dB): 1.395
 Validation WER (-5 dB): 94.110%
 
-Test PESQ (5 dB): 
+Test PESQ (5 dB): 2.478
 Test WER (5 dB):
 Test PESQ (0 dB):
 Test WER (0 dB):
