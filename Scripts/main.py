@@ -11,7 +11,7 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
 
 print("Creating training, validation, and test sets...")
-snr_db = 0
+snr_db = 5
 frame_time = 0.020
 
 # Generate training set
@@ -66,7 +66,7 @@ num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
 patience = 20
 """
 #model_name = "Model53_" + str(snr_db) + "dB"
-model_name = "Model53_5dB"
+model_name = "Model53_0dB"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
 #model_name_new = "Model53_" + str(snr_db) + "dB_FINETUNED"
