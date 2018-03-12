@@ -281,34 +281,42 @@ Fine Tuned New Speaker Noisy Test Reference PESQ (-5 dB): 1.182		    	Fine Tuned
 Fine Tuned New Speaker Noisy Test Reference WER  (-5 dB): 94.652%		    Fine Tuned New Speaker Filtered Test WER  (-5 dB): 81.684%
 
 PESQ	
-							 SNR Test
-						  		5				 	 0						 -5
+							 					   SNR Test
+							 (1.782)			   (1.444)				   (1.321)
+						  		5				 	  0						 -5
 				
-					5		  2.478		
+					5		  2.478					1.917				    1.350
 
 
 
 
-SNR Trained Model	0							    2.100
+SNR Trained Model	0		  2.530					2.100					1.461
    
    
    
    
    			   	   -5														1.482
    			   	   
+   			   	   
+   			   	   
+   			   	   
+   			   	   
+   			   	   
+   			   	   
 
 
 WER
 
-		 SNR Test
+		 										  SNR Test
+						  	(43.689%)			 (86.269%)				  (97.503%)
 						  		5				 	 0						 -5
 				
-					5		 25.243%		
+					5		 25.243%			  60.888%				   94.868%
 
 
 
 
-SNR Trained Model	0							    58.391%
+SNR Trained Model	0		 31.900%		      58.391%				   91.817%
    
    
    
