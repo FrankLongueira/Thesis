@@ -339,12 +339,12 @@ PESQ
 
 
 
-SNR Trained Model	0		  							
+SNR Trained Model	0		  						2.025					1.571
    
    
    
    
-   			   	   -5		  						
+   			   	   -5		  												1.619
    			   	   
    			   	   
    			   	   
@@ -359,7 +359,7 @@ WER
 					   (Noisy WER: 33.556%)   (Noisy WER: 72.326%)   (Noisy WER: 94.652%)
 						  		5				 	 0						 -5
 				
-					5		 21.791%
+					5		 21.791%			   45.588%					87.166%
 
 
 
