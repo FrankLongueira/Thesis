@@ -11,7 +11,7 @@ parent_cwd = os.path.abspath(os.path.join(cwd, os.pardir))
 audio_folder_path = parent_cwd + "/Audio_Files/"
 
 print("Creating training, validation, and test sets...")
-snr_db = -5
+snr_db = 5
 frame_time = 0.020
 
 # Generate training set
@@ -69,7 +69,7 @@ patience = 20
 #model_name = "Model53_-5dB"
 #model_save_path = parent_cwd + "/Saved_Models/" + model_name
 
-model_name_new = "Model53_" + "5" + "dB_FINETUNED"
+model_name_new = "Model53_" + "0" + "dB_FINETUNED"
 model_save_path_new = parent_cwd + "/Saved_Models/" + model_name_new
 
 model = cnn.load_model_(model_save_path_new)
@@ -104,14 +104,14 @@ test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model, test_
 
 print("Perfectly reconstructing filtered test set audio & saving to memory...")
 test_filtered = ap.rebuild_audio( test_filtered_frames )
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_Trained5dB_Test" + str(snr_db) + "dB_5min.wav", rate = fs, data = test_filtered)
-scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_Trained5dB_Test" + str(snr_db) + "dB_1min.wav", rate = fs, data = test_filtered[0:(60*fs)])
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_Tricia_Trained0dB_Test" + str(snr_db) + "dB_5min.wav", rate = fs, data = test_filtered)
+scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + model_name + "_FilteredTest_Tricia_Trained0dB_Test" + str(snr_db) + "dB_1min.wav", rate = fs, data = test_filtered[0:(60*fs)])
 
 os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 #call( ["./PESQ", "+16000", "CleanTest_Tricia_1min_" + str(snr_db) + "dB.wav", "NoisyTest_Tricia_1min_" + str(snr_db) + "dB.wav"] )
 #call( ["./PESQ", "+16000", "CleanTest_Tricia_1min_" + str(snr_db) + "dB.wav", model_name + "_FilteredTest_Trained5dB_Test" + str(snr_db) + "1min.wav"] )
 #call( ["./PESQ", "+16000", "CleanTest_1min_" + str(snr_db) + "dB.wav", "NoisyTest_1min_" + str(snr_db) + "dB.wav"] )
-call( ["./PESQ", "+16000", "CleanTest_1min_" + str(snr_db) + "dB.wav", model_name + "_FilteredTest_Trained5dB_Test" + str(snr_db) + "dB_1min.wav"] )
+call( ["./PESQ", "+16000", "CleanTest_Tricia_1min_" + str(snr_db) + "dB.wav", model_name + "_FilteredTest_Tricia_Trained0dB_Test" + str(snr_db) + "dB_1min.wav"] )
 """
 summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
