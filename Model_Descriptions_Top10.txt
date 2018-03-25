@@ -3,11 +3,13 @@ Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 29
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0149619835036
 Validation Loss: 0.0280033512336
 Number of Parameters: 3,218,501
@@ -19,11 +21,13 @@ Number of Filters Per Hidden Layer: 200, 200, 200, 200, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 35
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0146398135166
 Validation Loss: 0.0281914634397
 Number of Parameters: 12,837,001
@@ -35,11 +39,13 @@ Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 35
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.016485615045
 Validation Loss: 0.028403555044
 Number of Parameters: 1,009,501
@@ -51,11 +57,13 @@ Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50, 50
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 20
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0179147224677
 Validation Loss: 0.0284523007359
 Number of Parameters: 1,209,751
@@ -67,11 +75,13 @@ Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 29
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0141895399333
 Validation Loss: 0.0266052821079
 Number of Parameters: 4,819,501
@@ -83,11 +93,13 @@ Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 69
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0150186144539
 Validation Loss: 0.0284648104539
 Number of Parameters: 2,142,896
@@ -99,11 +111,13 @@ Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 1.0, 2.0, 4.0, 8.0, 16.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 46
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0144523108945
 Validation Loss: 0.027507254274
 Number of Parameters: 5,867,728
@@ -115,86 +129,46 @@ Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 8.0, 8.0, 12.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: ReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 72
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0127350104231
 Validation Loss: 0.0283544569146
 Number of Parameters: 4,682,896
 Validation PESQ: 2.422
 Validation WER: 28.454%
 
-FCNN Name: Model53_PReLU
+FCNN Name: Model53
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
 Frame Time: 20.0 ms
-Activation Function: PReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 29
+Activation: PReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
+Number of Parameters: 2,266,736
 Training Loss: 0.0153066175394
 Validation Loss: 0.0276513302435
-Number of Parameters: 2,266,736
 Validation PESQ: 2.458
 Validation WER: 25.718%
+Training Loss (0 dB): 0.0329275182994
+Validation Loss (0 dB): 0.0830621913256
 Validation PESQ (0 dB): 2.056
 Validation WER (0 dB): 60.411%
+Training Loss (-5 dB): 0.109046343979
+Validation Loss (-5 dB): 0.237691486046
+Validation PESQ (-5 dB): 1.395
+Validation WER (-5 dB): 94.110%
 
-FCNN Name: Model_53b_PReLU
-Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
-Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
-Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
-Total Epochs: 300
-Batch Size: 100 examples
-SNR: 5 dB
-Best Epoch: 36
-Training Loss: 0.0167125569588
-Validation Loss: 0.0286627422307
-Number of Parameters: 761,501
-Validation PESQ: 2.443
-Validation WER: 27.633%
-
-FCNN Name: Model_53c_PReLU
-Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
-Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
-Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
-Total Epochs: 300
-Batch Size: 100 examples
-SNR: 5 dB
-Best Epoch: 24
-Training Loss: 0.0159617189242
-Validation Loss: 0.028751412553
-Number of Parameters: 1,562,101
-Validation PESQ: 2.451
-Validation WER: 29.412%
-
-FCNN Name: Model_53d_PReLU
-Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
-Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
-Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
-Total Epochs: 300
-Batch Size: 100 examples
-SNR: 5 dB
-Best Epoch: 36
-Training Loss: 0.0157915527726
-Validation Loss: 0.0285157191015
-Number of Parameters: 841,251
-Validation PESQ: 2.480
-Validation WER: 27.223%
-Training Loss (0 dB): 0.0352021876569
-Validation Loss (0 dB): 0.0823882113324
-Validation PESQ (0 dB): 2.037
-Validation WER (0 dB):
-
-
-FCNN Name: Model_65
+FCNN Name: Model65
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
@@ -203,14 +177,16 @@ Total Epochs: 150
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 35
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0171705612745
 Validation Loss: 0.0283289428108
 Number of Parameters: 761,251	
-SNR = 5 dB
 Validation PESQ: 2.437			
 Validation WER: 29.275%
 
-FCNN Name: Model_53d_PReLU
+FCNN Name: Model70
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
@@ -219,6 +195,45 @@ Total Epochs: 300
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 36
+Activation: PReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
+Training Loss: 0.0167125569588
+Validation Loss: 0.0286627422307
+Number of Parameters: 761,501
+Validation PESQ: 2.443
+Validation WER: 27.633%
+
+FCNN Name: Model71
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 24
+Activation: PReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
+Training Loss: 0.0159617189242
+Validation Loss: 0.028751412553
+Number of Parameters: 1,562,101
+Validation PESQ: 2.451
+Validation WER: 29.412%
+
+FCNN Name: Model72
+Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
+Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
+Filter Size for Output Layer: 5.0 ms
+Frame Time: 20.0 ms
+Total Epochs: 300
+Batch Size: 100 examples
+SNR: 5 dB
+Best Epoch: 36
+Activation: ReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
 Training Loss: 0.0157915527726
 Validation Loss: 0.0285157191015
 Number of Parameters: 841,251
@@ -238,13 +253,15 @@ FCNN Name: Model53
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Number of Parameters: 2,266,736
 Frame Time: 20.0 ms
-Activation Function: PReLU
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
 Best Epoch: 29
+Activation: PReLU
+Batch Normalization: YES, between convolution & activation
+Regularization: NONE
+Number of Parameters: 2,266,736
 Training Loss (5 dB): 0.0153066175394
 Validation Loss (5 dB): 0.0276513302435
 Training Loss (0 dB): 0.0329275182994
@@ -279,6 +296,9 @@ Fine Tuned New Speaker Noisy Test Reference PESQ (0 dB): 1.471		    	Fine Tuned 
 Fine Tuned New Speaker Noisy Test Reference WER  (0 dB): 72.326%		    Fine Tuned New Speaker Filtered Test WER  (0 dB): 40.909%
 Fine Tuned New Speaker Noisy Test Reference PESQ (-5 dB): 1.182		    	Fine Tuned New Speaker Filtered Test PESQ (-5 dB): 1.619
 Fine Tuned New Speaker Noisy Test Reference WER  (-5 dB): 94.652%		    Fine Tuned New Speaker Filtered Test WER  (-5 dB): 81.684%
+#############################################################################################################################################
+
+Same Speaker
 
 PESQ	
 							 					   SNR Test
@@ -300,10 +320,7 @@ SNR Trained Model	0		  2.530					2.100					1.461
    			   	   
    			   	   
    			   	   
-   			   	   
-   			   	   
-   			   	   
-
+   			   	 
 
 WER
 		 										  SNR Test
@@ -321,13 +338,13 @@ SNR Trained Model	0		 31.900%		      58.391%				   91.817%
    
    
    			   	   -5		 52.705%			  77.531%				   94.452%
+   			   
    			   	   
-   			   	   
-   			   	   
-   			   	   
+#############################################################################################################################################
    			   	   
 
 
+New Speaker w/ finetuning
 
 PESQ	
 							 					   SNR Test
@@ -339,20 +356,16 @@ PESQ
 
 
 
-SNR Trained Model	0		  						2.025					1.571
+SNR Trained Model	0		  2.378					2.025					1.571
    
    
    
    
-   			   	   -5		  												1.619
+   			   	   -5		 2.283 					2.026					1.619
    			   	   
    			   	   
    			   	   
    			   	   
-   			   	   
-   			   	   
-   			   	   
-
 
 WER
 		 										  SNR Test
@@ -364,12 +377,12 @@ WER
 
 
 
-SNR Trained Model	0							   40.909%
+SNR Trained Model	0		 28.342%		       40.909%					76.337%
    
    
    
    
-   			   	   -5		 												81.684%
+   			   	   -5		 58.690%			   79.813%					81.684%
    			   	   
    			   	   
 ********************************************** BEST MODEL **************************************************
