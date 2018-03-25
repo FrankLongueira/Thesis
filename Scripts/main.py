@@ -13,7 +13,7 @@ audio_folder_path = parent_cwd + "/Audio_Files/"
 print("Creating training, validation, and test sets...")
 snr_db = 5
 frame_time = 0.020
-
+"""
 # Generate training set
 audio_time_series_train, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter1.wav")
 audio_time_series_train_noise, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter1_Babble.wav")
@@ -23,7 +23,7 @@ audio_time_series_train_noisy = ap.combine_clean_and_noise(audio_time_series_tra
 train_mu = np.mean( audio_time_series_train )
 train_std = np.std( audio_time_series_train )
 
-"""
+
 train_clean = ap.generate_input(  audio_time_series_train, fs, frame_time, train_mu, train_std )
 train_noisy = ap.generate_input(  audio_time_series_train_noisy, fs, frame_time, train_mu, train_std )
 
@@ -42,6 +42,7 @@ scipy.io.wavfile.write( filename = parent_cwd + "/Audio_Files/Test_Files/" + "No
 validation_clean = ap.generate_input(  audio_time_series_validation, fs, frame_time, train_mu, train_std )
 validation_noisy = ap.generate_input(  audio_time_series_validation_noisy, fs, frame_time, train_mu, train_std )
 """
+"""
 # Generate test set
 #audio_time_series_test, fs = ap.load_audio( audio_folder_path, audio_filename = "Chapter3_5_Min.wav")
 audio_time_series_test, fs = ap.load_audio( audio_folder_path, audio_filename = "TriciaG_5min.wav")
@@ -56,6 +57,7 @@ audio_time_series_test_noisy = ap.combine_clean_and_noise(audio_time_series_test
 test_clean = ap.generate_input(  audio_time_series_test, fs, frame_time, train_mu, train_std )
 test_noisy = ap.generate_input(  audio_time_series_test_noisy, fs, frame_time, train_mu, train_std )
 """
+"""
 print("Preparing neural network for training...")
 input_shape = (train_noisy.shape[1], 1)
 epochs = 5
@@ -66,10 +68,11 @@ num_filters_per_hidden_layer = [12, 25, 50, 100, 200]
 patience = 20
 """
 #model_name = "Model53_" + str(snr_db) + "dB"
-model_name = "Model53_-5dB"
+model_name = "Model53_0dB"
 model_save_path = parent_cwd + "/Saved_Models/" + model_name
 model = cnn.load_model_(model_save_path)
 
+print(model.summary())
 #model_name_new = "Model53_" + "-5" + "dB_FINETUNED"
 #model_save_path_new = parent_cwd + "/Saved_Models/" + model_name_new
 
@@ -99,7 +102,7 @@ model_finetuned, history = cnn.train_model_finetune(  	model = model,
 #model = cnn.load_model_(model_save_path)
 
 #model_name = model_name_new
-
+"""
 print("Getting CNN output for noisy test set input...")
 test_filtered_frames = (train_std * cnn.get_output_multiple_batches(model, test_noisy)) + train_mu
 
@@ -113,6 +116,7 @@ os.chdir(parent_cwd + "/Audio_Files/Test_Files")
 #call( ["./PESQ", "+16000", "CleanTest_Tricia_1min_" + str(snr_db) + "dB.wav", model_name + "_FilteredTest_Trained5dB_Test" + str(snr_db) + "1min.wav"] )
 #call( ["./PESQ", "+16000", "CleanTest_1min_" + str(snr_db) + "dB.wav", "NoisyTest_1min_" + str(snr_db) + "dB.wav"] )
 call( ["./PESQ", "+16000", "CleanTest_Tricia_1min_" + str(snr_db) + "dB.wav", model_name + "_FilteredTest_SameModel-5dB_Test" + str(snr_db) + "dB_1min.wav"] )
+"""
 """
 summary_stats_filename = parent_cwd + "/Saved_Models/Model_Descriptions.txt"
 cnn.summary_statistics( summary_stats_filename, model_name, history, frame_time, snr_db, 
