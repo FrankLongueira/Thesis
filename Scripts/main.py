@@ -66,7 +66,7 @@ model, history = cnn.train_model( 	model = model,
 									batch_size = batch_size,
 									validation_inputs = validation_noisy,
 									validation_labels = validation_clean,
-									filepath = model_save_path_new,
+									filepath = model_save_path,
 									patience = patience)
 									
 print("Getting CNN output for noisy test set input...")
