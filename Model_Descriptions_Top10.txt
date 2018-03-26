@@ -2,7 +2,7 @@ FCNN Name: Model25
 Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -20,7 +20,7 @@ FCNN Name: Model26
 Number of Filters Per Hidden Layer: 200, 200, 200, 200, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -38,7 +38,7 @@ FCNN Name: Model27
 Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -56,7 +56,7 @@ FCNN Name: Model30
 Number of Filters Per Hidden Layer: 50, 50, 50, 50, 50, 50, 50
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -74,7 +74,7 @@ FCNN Name: Model31
 Number of Filters Per Hidden Layer: 100, 100, 100, 100, 100, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -92,7 +92,7 @@ FCNN Name: Model33
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -110,7 +110,7 @@ FCNN Name: Model38
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 1.0, 2.0, 4.0, 8.0, 16.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -128,7 +128,7 @@ FCNN Name: Model41
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 8.0, 8.0, 12.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -146,7 +146,7 @@ FCNN Name: Model53
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
@@ -168,11 +168,11 @@ Validation Loss (-5 dB): 0.237691486046
 Validation PESQ (-5 dB): 1.395
 Validation WER (-5 dB): 94.110%
 
-FCNN Name: Model65
+FCNN Name: Model64
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 150
 Batch Size: 100 examples
 SNR: 5 dB
@@ -186,11 +186,11 @@ Number of Parameters: 761,251
 Validation PESQ: 2.437			
 Validation WER: 29.275%
 
-FCNN Name: Model70
+FCNN Name: Model69
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 300
 Batch Size: 100 examples
 SNR: 5 dB
@@ -204,11 +204,11 @@ Number of Parameters: 761,501
 Validation PESQ: 2.443
 Validation WER: 27.633%
 
-FCNN Name: Model71
+FCNN Name: Model70
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 300
 Batch Size: 100 examples
 SNR: 5 dB
@@ -222,11 +222,11 @@ Number of Parameters: 1,562,101
 Validation PESQ: 2.451
 Validation WER: 29.412%
 
-FCNN Name: Model72
+FCNN Name: Model71
 Number of Filters Per Hidden Layer: 25, 25, 50, 50, 100
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 300
 Batch Size: 100 examples
 SNR: 5 dB
@@ -253,7 +253,7 @@ FCNN Name: Model53
 Number of Filters Per Hidden Layer: 12, 25, 50, 100, 200
 Filter Size Per Hidden Layer: 5.0, 5.0, 5.0, 5.0, 5.0 ms
 Filter Size for Output Layer: 5.0 ms
-Frame Time: 20.0 ms
+Input Frame Time: 20.0 ms
 Total Epochs: 125
 Batch Size: 100 examples
 SNR: 5 dB
